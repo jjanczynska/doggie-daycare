@@ -18,7 +18,7 @@ class Owner(models.Model):
 class Dog(models.Model):
     owner = models.ForeignKey(
         Owner,
-        related_name='dogs',
+        related_name='dog',
         on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     breed = models.CharField(max_length=50)
@@ -33,11 +33,11 @@ class Dog(models.Model):
 class Reservation(models.Model):
     owner = models.ForeignKey(
         Owner,
-        related_name='reservations',
+        related_name='reservation',
         on_delete=models.CASCADE)
     dog = models.ForeignKey(
         Dog,
-        related_name='reservations',
+        related_name='reservation',
         on_delete=models.CASCADE)
     date_of_daycare = models.DateField()
 
