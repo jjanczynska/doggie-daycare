@@ -3,7 +3,11 @@ from .models import Owner, Dog, Reservation, ExtraInfo
 
 
 # Models registeration
-admin.site.register(Owner)
+class OwnerAdmin(admin.ModelAdmin):
+    list_display = ['user', 'tel_no']
+
+
+admin.site.register(Owner, OwnerAdmin)
 admin.site.register(Dog)
 admin.site.register(Reservation)
 admin.site.register(ExtraInfo)

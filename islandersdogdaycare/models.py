@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 # Owner Model
 class Owner(models.Model):
-    User = models.OneToOneField(
+    user = models.OneToOneField(
         User,
         related_name='owner_profile',
         on_delete=models.CASCADE)
@@ -44,7 +44,7 @@ class Reservation(models.Model):
     def __str__(self):
         return (
             f"{self.owner.user.username}'s reservation for "
-            f"{self.dog_name} on {self.date_of_daycare}"
+            f"{self.dog.name} on {self.date_of_daycare}"
         )
 
 
