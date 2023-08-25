@@ -16,14 +16,43 @@ class Owner(models.Model):
 
 # Dog Model
 class Dog(models.Model):
+
+    SEX_CHOICES = [
+        ('M', 'Male'),
+        ('F', 'Female'),
+    ]
+
+    VACCINATION_CHOICES = [
+        ('Yes', 'Yes'),
+        ('No', 'No'),
+    ]
+
+    FOOD_PROVIDED_CHOICES = [
+        ('Yes', 'Yes'),
+        ('No', 'No'),
+    ]
+
     owner = models.ForeignKey(
         Owner,
         related_name='dog',
         on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
+    sex = models.CharField(
+        max_length=1,
+        choices=SEX_CHOICES,
+        null=True,
+        blank=True)
     breed = models.CharField(max_length=50)
-    bring_own_food = models.BooleanField()
-    up_to_date_vaccinations = models.BooleanField()
+    food_provided = models.CharField(
+        max_length=3,
+        choices=FOOD_PROVIDED_CHOICES,
+        null=True,
+        blank=True)
+    vaccinations_up_to_date = models.CharField(
+        max_length=3,
+        null=True,
+        blank=True,
+        choices=VACCINATION_CHOICES)
 
     def __str__(self):
         return self.name
