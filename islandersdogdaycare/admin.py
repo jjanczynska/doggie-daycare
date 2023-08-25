@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Owner, Dog, Reservation, ExtraInfo
+from .models import Owner, Dog, Reservation, ExtraInfo, Testimonial, Comment
 
 
 # Models registeration
@@ -11,3 +11,5 @@ admin.site.register(Owner, OwnerAdmin)
 admin.site.register(Dog)
 admin.site.register(Reservation)
 admin.site.register(ExtraInfo)
+admin.site.register(Testimonial)
+admin.site.register(Comment)
