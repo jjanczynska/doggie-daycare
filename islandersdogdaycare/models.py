@@ -58,3 +58,27 @@ class ExtraInfo(models.Model):
 
     def __str__(self):
         return f"Extra information for {self.reservation}"
+
+
+# Testimonial Model
+
+class Testimonial(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    text = models.TextField()
+    approved = models.BooleanField(default=False, null=True)
+
+    def __str__(self):
+        return F"Testimonial by {self.user.username}"
+
+
+# Comment Model
+
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    testimonial = models.ForeignKey(
+        Testimonial, related_name='comment',
+        on_delete=models.CASCADE)
+    text = models.TextField()
+
+    def __str__(self):
+        return F"Comment by {self.user.username}"
