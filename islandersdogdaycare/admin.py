@@ -13,3 +13,4 @@ admin.site.register(Reservation)
 admin.site.register(ExtraInfo)
 admin.site.register(Testimonial)
 admin.site.register(Comment)
+
