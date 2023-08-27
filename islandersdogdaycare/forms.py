@@ -5,7 +5,7 @@ from .models import Reservation, Testimonial, Comment
 class ReservationForm(forms.ModelForm):
     class Meta:
         model = Reservation
-        fields = 'body'
+        fields = ['dog', 'date_of_daycare']
 
 
 class TestimonialForm(forms.ModelForm):

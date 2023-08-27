@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <form method="post" action="{% url 'reservations' %}">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="create">
+            {{ form.as_p }} <!-- Renders the form fields -->
+            <button type="submit">Make a Reservation</button>
+        </form>
+    </div>
+
+    {% for reservation in reservations %}
+    <form method="post" action="{% url 'reservations' %}">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="edit">
+        <input type="hidden" name="reservation_id" value="{{ reservation.id }}">
+        {{ form.as_p }} <!-- Add this -->
+        <button type="submit">Edit</button>
+    </form>
+{% endfor %}
+</body>
+</html>
