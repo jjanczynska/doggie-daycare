@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
+from cloudinary.models import CloudinaryField
 
 
 # Owner Model
@@ -34,7 +36,7 @@ class Dog(models.Model):
 
     owner = models.ForeignKey(
         Owner,
-        related_name='dog',
+        related_name='dogs',
         on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     sex = models.CharField(
@@ -43,16 +45,8 @@ class Dog(models.Model):
         null=True,
         blank=True)
     breed = models.CharField(max_length=50)
-    food_provided = models.CharField(
-        max_length=3,
-        choices=FOOD_PROVIDED_CHOICES,
-        null=True,
-        blank=True)
-    vaccinations_up_to_date = models.CharField(
-        max_length=3,
-        null=True,
-        blank=True,
-        choices=VACCINATION_CHOICES)
+    food_provided = models.BooleanField(default=False)
+    vaccinations_up_to_date = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -62,11 +56,11 @@ class Dog(models.Model):
 class Reservation(models.Model):
     owner = models.ForeignKey(
         Owner,
-        related_name='reservation',
+        related_name='reservations',
         on_delete=models.CASCADE)
     dog = models.ForeignKey(
         Dog,
-        related_name='reservation',
+        related_name='reservations',
         on_delete=models.CASCADE)
     date_of_daycare = models.DateField()
 
@@ -91,13 +85,30 @@ class ExtraInfo(models.Model):
 
 # Testimonial Model
 
+STATUS = ((0, "Draft"), (1, "Published"))
+
+
 class Testimonial(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    text = models.TextField()
-    approved = models.BooleanField(default=False, null=True)
+    title = models.CharField(
+        max_length=500, unique=True,
+        default='Testimonial Title')
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="testimonials",
+        null=True, default=None
+    )
+    featured_image = CloudinaryField('image', default='placeholder')
+    excerpt = models.TextField(blank=True)
+    updated_on = models.DateTimeField(auto_now=True)
+    content = models.TextField()
+    created_on = models.DateTimeField(default=timezone.now)
+    status = models.IntegerField(choices=STATUS, default=0)
+    approved = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ["-created_on"]
 
     def __str__(self):
-        return F"Testimonial by {self.user.username}"
+        return f"Testimonial by {self.author.username}"
 
 
 # Comment Model
@@ -105,9 +116,11 @@ class Testimonial(models.Model):
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     testimonial = models.ForeignKey(
-        Testimonial, related_name='comment',
-        on_delete=models.CASCADE)
+        Testimonial, related_name='comments', on_delete=models.CASCADE
+    )
+    created_on = models.DateTimeField(default=timezone.now)
     text = models.TextField()
+    approved = models.BooleanField(default=False)
 
     def __str__(self):
         return F"Comment by {self.user.username}"
