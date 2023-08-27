@@ -10,33 +10,35 @@ from .forms import ReservationForm, TestimonialForm, CommentForm
 @login_required
 def reservations(request):
     if request.method == 'POST':
-        action = request.POST.get('action') 
-        
-        if action == 'create':
-            form = ReservationForm(request.POST)
-            if form.is_valid():
-                reservation = form.save(commit=False)
-                reservation.owner = get_object_or_404(Owner, user=request.user)
-                reservation.save()
-                return redirect('reservations')
-        
-        elif action == "edit":
-            reservation_id = request.POST.get('reservation_id')
-            reservation = get_object_or_404(Reservation, id=reservation_id)
-            form = ReservationForm(request.POST, instance=reservation)
-            if form.is_valid():
-                form.save()
-                return redirect('reservations')
-        
-        elif action == "delete":
-            reservation_id = request.POST.get('reservation_id')
-            reservation = get_object_or_404(Reservation, id=reservation_id)
-            reservation.delete()
-            return redirect('reservations')
-            
-    reservations = Reservation.objects.filter(owner__user=request.user)
-    form = ReservationForm()
+        form = ExtendedReservationForm(request.POST)
+        if form.is_valid():
+            owner, created = Owner.objects.get_or_create(user=request.user)
+            owner.tel_no = form.cleaned_data['tel_no']
+            owner.save()
+
+        dog = Dog.objects.create(
+                owner=owner,
+                name=form.cleaned_data['name'],
+                sex=form.cleaned_data['sex'],
+                breed=form.cleaned_data['breed'],
+                food_provided=form.cleaned_data['food_provided'],
+                vaccinations_up_to_date=form.cleaned_data
+                ['vaccinations_up_to_date']
+            )
+
+        reservation = form.save(commit=False)
+        reservation.owner = owner
+        reservation.dog = dog
+        reservation.save()
+
+        return redirect('reservations')
+
+    else:
+        form = ExtendedReservationForm()
+
+    existing_reservations = Reservation.objects.filter(
+        owner__user=request.user)
     return render(
-        request, 'reservations.html', {
-            'reservations': reservations, 'form': form}
-    )
+        request,
+        'reservations.html',
+        {'form': form, 'reservations': existing_reservations})
