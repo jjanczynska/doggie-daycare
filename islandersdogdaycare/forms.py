@@ -14,4 +14,7 @@ class TestimonialForm(forms.ModelForm):
         fields = ['title', 'excerpt', 'content', 'featured_image']
 
 
-
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['text']
