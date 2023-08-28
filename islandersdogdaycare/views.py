@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Owner, Dog, Reservation, ExtraInfo, Testimonial, Comment
-from .forms import ReservationForm, TestimonialForm, CommentForm
+from .models import Owner, Dog, Reservation, Testimonial, Comment
+
 
 # Reservations View:
 
@@ -19,7 +19,7 @@ def reservations(request):
         dog = Dog.objects.create(
                 owner=owner,
                 name=form.cleaned_data['name'],
-                sex=form.cleaned_data['sex'],
+                gender=form.cleaned_data['gender'],
                 breed=form.cleaned_data['breed'],
                 food_provided=form.cleaned_data['food_provided'],
                 vaccinations_up_to_date=form.cleaned_data
@@ -34,7 +34,7 @@ def reservations(request):
         return redirect('reservations')
 
     else:
-        form = ExtendedReservationForm()
+        form = ReservationForm()
 
     existing_reservations = Reservation.objects.filter(
         owner__user=request.user)

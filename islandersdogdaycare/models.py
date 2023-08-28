@@ -7,10 +7,12 @@ from cloudinary.models import CloudinaryField
 # Owner Model
 class Owner(models.Model):
     user = models.OneToOneField(
-        User,
-        related_name='owner_profile',
-        on_delete=models.CASCADE)
+        User, 
+        on_delete=models.CASCADE,
+        primary_key=True)
+    name = models.CharField(max_length=100, default="Default Name")
     tel_no = models.CharField(max_length=15)
+    email_address = models.EmailField(default="default@example.com")
 
     def __str__(self):
         return self.user.username
@@ -19,19 +21,9 @@ class Owner(models.Model):
 # Dog Model
 class Dog(models.Model):
 
-    SEX_CHOICES = [
+    GENDER_CHOICES = [
         ('M', 'Male'),
         ('F', 'Female'),
-    ]
-
-    VACCINATION_CHOICES = [
-        ('Yes', 'Yes'),
-        ('No', 'No'),
-    ]
-
-    FOOD_PROVIDED_CHOICES = [
-        ('Yes', 'Yes'),
-        ('No', 'No'),
     ]
 
     owner = models.ForeignKey(
@@ -39,9 +31,9 @@ class Dog(models.Model):
         related_name='dogs',
         on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
-    sex = models.CharField(
+    gender = models.CharField(
         max_length=1,
-        choices=SEX_CHOICES,
+        choices=GENDER_CHOICES,
         null=True,
         blank=True)
     breed = models.CharField(max_length=50)
@@ -54,33 +46,12 @@ class Dog(models.Model):
 
 # Reservation Model
 class Reservation(models.Model):
-    owner = models.ForeignKey(
-        Owner,
-        related_name='reservations',
-        on_delete=models.CASCADE)
-    dog = models.ForeignKey(
-        Dog,
-        related_name='reservations',
-        on_delete=models.CASCADE)
+    dog = models.ForeignKey(Dog, on_delete=models.CASCADE)
     date_of_daycare = models.DateField()
+    notes = models.TextField(blank=True)
 
     def __str__(self):
-        return (
-            f"{self.owner.user.username}'s reservation for "
-            f"{self.dog.name} on {self.date_of_daycare}"
-        )
-
-
-# ExtraInfo Model
-class ExtraInfo(models.Model):
-    reservation = models.OneToOneField(
-        Reservation,
-        related_name='extra_info',
-        on_delete=models.CASCADE)
-    comment = models.TextField(null=True, blank=True)
-
-    def __str__(self):
-        return f"Extra information for {self.reservation}"
+        return f"Reservation for {self.dog.name} on {self.date}"
 
 
 # Testimonial Model
@@ -93,8 +64,8 @@ class Testimonial(models.Model):
         max_length=500, unique=True,
         default='Testimonial Title')
     author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="testimonials",
-        null=True, default=None
+        User, on_delete=models.CASCADE, related_name='Testimonials',
+        default='User'
     )
     featured_image = CloudinaryField('image', default='placeholder')
     excerpt = models.TextField(blank=True)
@@ -108,7 +79,10 @@ class Testimonial(models.Model):
         ordering = ["-created_on"]
 
     def __str__(self):
-        return f"Testimonial by {self.author.username}"
+        if self.author:
+            return f"Testimonial by {self.author.username}"
+        else:
+            return "Anonymous Testimonial"
 
 
 # Comment Model
