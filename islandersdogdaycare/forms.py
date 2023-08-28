@@ -2,6 +2,8 @@ from django import forms
 from .models import Owner, Dog, Reservation, Testimonial, Comment
 
 # Forms for Reservation:
+
+
 class DogForm(form.ModelForm):
 
     class Meta:
@@ -22,6 +24,8 @@ class ReservationForm(forms.ModelForm):
         fields = ('dog', 'date', 'notes')
 
 # Forms for Testimonials and comments:
+
+
 class TestimonialForm(forms.ModelForm):
     class Meta:
         model = Testimonial
