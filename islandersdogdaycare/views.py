@@ -10,11 +10,13 @@ from .forms import DogForm, ReservationForm, TestimonialForm, CommentForm
 
 @login_required
 def reservations(request):
+    form = ReservationForm
     if request.method == 'POST':
-        form = ExtendedReservationForm(request.POST)
+        form = ReservationForm(request.POST)
         if form.is_valid():
             owner, created = Owner.objects.get_or_create(user=request.user)
             owner.tel_no = form.cleaned_data['tel_no']
+            owner.email_address = form.cleaned_data['default@example.com']
             owner.save()
 
         dog = Dog.objects.create(

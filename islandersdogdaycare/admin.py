@@ -12,4 +12,3 @@ admin.site.register(Dog)
 admin.site.register(Reservation)
 admin.site.register(Testimonial)
 admin.site.register(Comment)
-

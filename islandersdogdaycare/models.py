@@ -46,12 +46,17 @@ class Dog(models.Model):
 
 # Reservation Model
 class Reservation(models.Model):
+    owner = models.ForeignKey(
+        Owner, 
+        on_delete=models.CASCADE, 
+        null=True, 
+        blank=True)
     dog = models.ForeignKey(Dog, on_delete=models.CASCADE)
     date_of_daycare = models.DateField()
     notes = models.TextField(blank=True)
 
     def __str__(self):
-        return f"Reservation for {self.dog.name} on {self.date}"
+        return f"Reservation for {self.dog.name} on {self.date_of_daycare}"
 
 
 # Testimonial Model
@@ -97,4 +102,4 @@ class Comment(models.Model):
     approved = models.BooleanField(default=False)
 
     def __str__(self):
-        return F"Comment by {self.user.username}"
+        return f"Comment by {self.user.username}"
