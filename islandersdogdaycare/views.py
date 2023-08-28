@@ -10,38 +10,43 @@ from .forms import DogForm, ReservationForm, TestimonialForm, CommentForm
 
 @login_required
 def reservations(request):
-    form = ReservationForm
     if request.method == 'POST':
         form = ReservationForm(request.POST)
         if form.is_valid():
             owner, created = Owner.objects.get_or_create(user=request.user)
-            owner.tel_no = form.cleaned_data['tel_no']
-            owner.email_address = form.cleaned_data['default@example.com']
+            owner.tel_no = form.cleaned_data.get('tel_no', '')
+            owner.email_address = form.cleaned_data.get('email_address', '')
             owner.save()
 
-        dog = Dog.objects.create(
+            dog, created = Dog.objects.get_or_create(
                 owner=owner,
                 name=form.cleaned_data['name'],
-                gender=form.cleaned_data['gender'],
-                breed=form.cleaned_data['breed'],
-                food_provided=form.cleaned_data['food_provided'],
-                vaccinations_up_to_date=form.cleaned_data
-                ['vaccinations_up_to_date']
+                defaults={
+                    'gender': form.cleaned_data['gender'],
+                    'breed': form.cleaned_data['breed'],
+                    'food_provided': form.cleaned_data['food_provided'],
+                    'vaccinations_up_to_date': 
+                        form.cleaned_data['vaccinations_up_to_date']
+                }
             )
 
-        reservation = form.save(commit=False)
-        reservation.owner = owner
-        reservation.dog = dog
-        reservation.save()
+            reservation = form.save(commit=False)
+            reservation.owner = owner
+            reservation.dog = dog
+            reservation.save()
 
-        return redirect('reservations')
-
+            messages.success(request, 'Reservation successfully created!')
+            return redirect('reservations')
+        else:
+            messages.error(request, 'Please correct the errors below.')
     else:
         form = ReservationForm()
 
     existing_reservations = Reservation.objects.filter(
-        owner__user=request.user)
+        owner__user=request.user
+        )
     return render(
         request,
         'reservations.html',
-        {'form': form, 'reservations': existing_reservations})
+        {'form': form, 'reservations': existing_reservations}
+    )
