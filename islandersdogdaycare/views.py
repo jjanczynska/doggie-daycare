@@ -25,7 +25,7 @@ def reservations(request):
                     'gender': form.cleaned_data['gender'],
                     'breed': form.cleaned_data['breed'],
                     'food_provided': form.cleaned_data['food_provided'],
-                    'vaccinations_up_to_date': 
+                    'vaccinations_up_to_date':
                         form.cleaned_data['vaccinations_up_to_date']
                 }
             )
@@ -49,4 +49,34 @@ def reservations(request):
         request,
         'reservations.html',
         {'form': form, 'reservations': existing_reservations}
+    )
+
+# Testimonials and comments View
+
+
+def testimonials(request, testimonial_id):
+    testimonial = get_object_or_404(Testimonial, id=testimonial_id)
+    comments = Comment.objects.filter(testimonial=testimonial, approved=True)
+    new_comment = None
+
+    if request.method == 'POST':
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            new_comment.testimonial = testimonial
+            new_comment.user = request.user
+            new_comment.save()
+            return redirect('testimonials', tedtimonial_id=testimonial.id)
+    else:
+        comment_form = CommentForm()
+
+    return render(
+        request,
+        'testimonials.html',
+        {
+            'testimonials': testimonial,
+            'comment': comments,
+            'new_comment': new_comment,
+            'comment_form': comment_form
+            }
     )
