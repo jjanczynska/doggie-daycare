@@ -9,9 +9,26 @@
     <h1>Make a reservation</h1>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Book</button>
+    
+        <h2>Owner Details</h2>
+        {{ owner_form.as_p }}
+    
+        <h2>Date of Boarding</h2>
+        {{ reservation_form.date_of_daycare.label_tag }} {{ reservation_form.date_of_daycare }}
+    
+        <h2>Dog Information</h2>
+        {{ dog_form.as_p }}
+    
+        <input type="submit" value="Submit">
     </form>
+</body>
+</html>
+    
+    
+    
+    
+    
+    
     
 </body>
 </html>
