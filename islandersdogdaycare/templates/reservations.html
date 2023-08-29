@@ -3,26 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>reservations</title>
 </head>
 <body>
-    <div>
-        <h1>Make a Reservation</h1>
-        <form method="post" action="{% url 'reservations' %}">
-            {% csrf_token %}
-            <input type="hidden" name="action" value="create">
-            
-            {{ form.as_p }}
-            
-            <button type="submit" class="btn btn-primary">Create Reservation</button>
-        </form>
-
-        <h2>Your Reservations</h2>
-        <ul>
-            {% for reservation in reservations %}
-            <li>{{ reservation }}</li>
-            {% endfor %}
-        </ul>
-    </div>
+    <h1>Make a reservation</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Book</button>
+    </form>
+    
 </body>
 </html>

@@ -4,8 +4,12 @@ from .models import Owner, Dog, Reservation, Testimonial, Comment
 # Forms for Reservation:
 
 
-class DogForm(forms.ModelForm):
+class OwnerForm(forms.ModelForm):
+    class Meta:
+        model = Ownerfields = ('name', 'tel_no', 'email_address')
 
+
+class DogForm(forms.ModelForm):
     class Meta:
         model = Dog
         fields = (
@@ -20,7 +24,7 @@ class DogForm(forms.ModelForm):
 class ReservationForm(forms.ModelForm):
     class Meta:
         model = Reservation
-        fields = ('dog', 'date_of_daycare', 'notes')
+        fields = ('date_of_daycare', 'notes')
 
 # Forms for Testimonials and comments:
 
