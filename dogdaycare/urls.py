@@ -20,5 +20,6 @@ from islandersdogdaycare import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('reservations/', views.reservations, name='reservations'),
-    path('testimonials/', views.testimonials, name='testimonials')
+    path('testimonials/', views.testimonials, name='testimonials'),
+    path('islandersdogdaycare/', include('islandersdogdaycare.urls')),
 ]

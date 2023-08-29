@@ -6,7 +6,8 @@ from .models import Owner, Dog, Reservation, Testimonial, Comment
 
 class OwnerForm(forms.ModelForm):
     class Meta:
-        model = Ownerfields = ('name', 'tel_no', 'email_address')
+        model = Owner
+        fields = ('name', 'tel_no', 'email_address')
 
 
 class DogForm(forms.ModelForm):

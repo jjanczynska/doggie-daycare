@@ -1,10 +1,7 @@
 from django.urls import path
-from views import reservations, testimonials
+from . import views
 
-urlpatters = [
+urlpatterns = [
     path('reservations/', views.reservations, name='reservations'),
-    path(
-        'testimonials/<int:testimonial_id>/',
-        views.testimonials, name='testimonials'),
-
+    path('testimonials', views.testimonials, name='testimonials'),
 ]

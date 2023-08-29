@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonials</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <h1>Please feel free to leave your own testimonial about our services</h1>
+
+    <!-- Button to Open the Testimonial Modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#testimonialModal">
+        + Add Testimonial
+    </button>
+
+    <!-- The Testimonial Modal -->
+    <div class="modal" id="testimonialModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <!-- Your Testimonial form here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials and comments -->
+    {% for testimonial in testimonials %}
+        <p>{{ testimonial.content }}</p>
+
+        <!-- Button to toggle comment form -->
+        <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#commentForm{{testimonial.id}}" aria-expanded="false">
+            Comment
+        </button>
+
+        <!-- Collapsible comment form -->
+        <div class="collapse" id="commentForm{{testimonial.id}}">
+            <form method="post" action="{% url 'testimonials' %}">
+                {% csrf_token %}
+                <input type="hidden" name="testimonial_id" value="{{ testimonial.id }}">
+                {{ comment_form.as_p }}
+                <button type="submit" class="btn btn-primary">Add Comment</button>
+            </form>
+        </div>
+
+        <!-- Displaying comments -->
+        {% for comment in testimonial.comments.all %}
+            {% if comment.approved %}
+                <p>{{ comment.content }}</p>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+
+</body>
+</html>

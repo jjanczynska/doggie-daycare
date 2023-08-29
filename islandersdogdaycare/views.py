@@ -15,6 +15,7 @@ from .forms import (
 
 @login_required
 def reservations(request):
+    reservation_made = False
     if request.method == 'POST':
         owner_form = OwnerForm(request.POST)
         dog_form = DogForm(request.POST)
@@ -48,13 +49,13 @@ def reservations(request):
             reservation.save()
 
             messages.success(request, 'Reservation successfully created!')
-            return redirect('reservations')
+            reservation_made = True
         else:
             messages.error(request, 'Please correct the errors below.')
     else:
         owner_form = OwnerForm()
         dog_form = DogForm()
-        reservation_formform = ReservationForm()
+        reservation_form = ReservationForm()
 
     existing_reservations = Reservation.objects.filter(
         owner__user=request.user
@@ -66,26 +67,26 @@ def reservations(request):
             'owner_form': owner_form,
             'dog_form': dog_form,
             'reservation_form': reservation_form,
-            'reservations': existing_reservations
+            'reservations': existing_reservations,
+            'reservation_made': reservation_made
         }
     )
 
 # Testimonials and comments View
 
 
-def testimonials(request, testimonial_id):
-    testimonial = get_object_or_404(Testimonial, id=testimonial_id)
-    comments = Comment.objects.filter(testimonial=testimonial, approved=True)
-    new_comment = None
+def testimonials(request):
+    all_testimonials = Testimonial.objects.filter(status=1, approved=True).order_by('-created_on')
 
     if request.method == 'POST':
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
             new_comment = comment_form.save(commit=False)
-            new_comment.testimonial = testimonial
+            testimonial_id = request.POST.get('testimonial_id')
+            new_comment.testimonial = get_object_or_404(Testimonial, id=testimonial_id)
             new_comment.user = request.user
             new_comment.save()
-            return redirect('testimonials', tedtimonial_id=testimonial.id)
+            return redirect('testimonials')
     else:
         comment_form = CommentForm()
 
@@ -93,9 +94,7 @@ def testimonials(request, testimonial_id):
         request,
         'testimonials.html',
         {
-            'testimonials': testimonial,
-            'comment': comments,
-            'new_comment': new_comment,
+            'testimonials': all_testimonials,
             'comment_form': comment_form
             }
     )
