@@ -76,14 +76,20 @@ def reservations(request):
 
 
 def testimonials(request):
-    all_testimonials = Testimonial.objects.filter(status=1, approved=True).order_by('-created_on')
+    all_testimonials = (
+        Testimonial.objects
+        .filter(status=1, approved=True)
+        .order_by('-created_on')
+    )
 
     if request.method == 'POST':
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
             new_comment = comment_form.save(commit=False)
             testimonial_id = request.POST.get('testimonial_id')
-            new_comment.testimonial = get_object_or_404(Testimonial, id=testimonial_id)
+            new_comment.testimonial = get_object_or_404(
+                Testimonial,
+                id=testimonial_id)
             new_comment.user = request.user
             new_comment.save()
             return redirect('testimonials')
