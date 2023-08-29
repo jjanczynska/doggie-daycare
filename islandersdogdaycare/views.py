@@ -2,8 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Owner, Dog, Reservation, Testimonial, Comment
-from .forms import DogForm, ReservationForm, TestimonialForm, CommentForm
-
+from .forms import OwnerForm, DogForm, ReservationForm, TestimonialForm, CommentForm
 
 # Reservations View:
 
@@ -11,26 +10,27 @@ from .forms import DogForm, ReservationForm, TestimonialForm, CommentForm
 @login_required
 def reservations(request):
     if request.method == 'POST':
-        form = ReservationForm(request.POST)
-        if form.is_valid():
+        owner_form = OwnerForm(request.POST)
+        dog_form = DogForm(request.POST)
+        reservation_form = ReservationForm(request.POST)
+
+        if owner_form.is_valid() and dog_form.is_valid() and reservation_form.is_valid():
             owner, created = Owner.objects.get_or_create(user=request.user)
-            owner.tel_no = form.cleaned_data.get('tel_no', '')
-            owner.email_address = form.cleaned_data.get('email_address', '')
+            owner.name = owner_form.cleaned_data.get('name')
+            owner.tel_no = owner_form.cleaned_data.get('tel_no')
+            owner.email_address = owner_form.cleaned_data.get('email_address',)
             owner.save()
 
-            dog, created = Dog.objects.get_or_create(
+            dog = Dog.objects.create(
                 owner=owner,
-                name=form.cleaned_data['name'],
-                defaults={
-                    'gender': form.cleaned_data['gender'],
-                    'breed': form.cleaned_data['breed'],
-                    'food_provided': form.cleaned_data['food_provided'],
-                    'vaccinations_up_to_date':
-                        form.cleaned_data['vaccinations_up_to_date']
-                }
+                name=dog_form.cleaned_data['name'],
+                gender=dog_form.cleaned_data['gender'],
+                breed=dog_form.cleaned_data['breed'],
+                food_provided=dog_form.cleaned_data['food_provided'],
+                vaccinations_up_to_date=dog_form.cleaned_data['vaccinations_up_to_date']
             )
 
-            reservation = form.save(commit=False)
+            reservation = reservation_form.save(commit=False)
             reservation.owner = owner
             reservation.dog = dog
             reservation.save()
@@ -40,7 +40,9 @@ def reservations(request):
         else:
             messages.error(request, 'Please correct the errors below.')
     else:
-        form = ReservationForm()
+        owner_form = OwnerForm()
+        dog_form = DogForm()
+        reservation_formform = ReservationForm()
 
     existing_reservations = Reservation.objects.filter(
         owner__user=request.user
@@ -48,7 +50,7 @@ def reservations(request):
     return render(
         request,
         'reservations.html',
-        {'form': form, 'reservations': existing_reservations}
+        {'owner_form': owner_form, 'dog_form': dog_form, 'reservation_form': reservation_form, 'reservations': existing_reservations}
     )
 
 # Testimonials and comments View
