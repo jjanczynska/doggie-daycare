@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import DateField
+from django.forms import DateInput
 from django.contrib.admin.widgets import AdminDateWidget
 from .models import Owner, Dog, Reservation, Testimonial, Comment
 
@@ -17,14 +17,18 @@ class DogForm(forms.ModelForm):
         widget=forms.RadioSelect,
         choices=[(True, 'Yes'), (False, 'No')],
         initial=None,
-        required=False
+        required=False,
+        label='Is your dog up to date with all required vaccinations?',
+        help_text='Proof of recent vaccinations required at drop off'
     )
 
     food_provided = forms.ChoiceField(
         widget=forms.RadioSelect,
         choices=[(True, 'Yes'), (False, 'No')],
         initial=None,
-        required=False
+        required=False,
+        label='Are you bringing your own brand of food for your dog?',
+        help_text='We can provide our own if your answer is "No"'
     )
 
     class Meta:
@@ -39,7 +43,9 @@ class DogForm(forms.ModelForm):
 
 
 class ReservationForm(forms.ModelForm):
-    date_of_daycare = DateField(widget=AdminDateWidget)
+    date_of_daycare = forms.DateField(
+        widget=DateInput(attrs={'type': 'date'})
+    )
 
     class Meta:
         model = Reservation
