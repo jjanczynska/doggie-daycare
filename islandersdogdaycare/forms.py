@@ -12,6 +12,20 @@ class OwnerForm(forms.ModelForm):
 
 
 class DogForm(forms.ModelForm):
+    vaccinations_up_to_date = forms.ChoiceField(
+        widget=forms.RadioSelect,
+        choices=[(True, 'Yes'), (False, 'No')],
+        initial=None,
+        required=False
+    )
+
+    food_provided = forms.ChoiceField(
+        widget=forms.RadioSelect,
+        choices=[(True, 'Yes'), (False, 'No')],
+        initial=None,
+        required=False
+    )
+
     class Meta:
         model = Dog
         fields = (
@@ -22,16 +36,12 @@ class DogForm(forms.ModelForm):
             'food_provided',
             )
 
-        widgets = {
-            'vaccinations_up_to_date': forms.RadioSelect,
-            'food_provided': forms.RadioSelect
-        }
-
 
 class ReservationForm(forms.ModelForm):
+    date_of_daycare = DateField(widget=AdminDateWidget)
+
     class Meta:
         model = Reservation
-        date_of_daycare = dateField(widget=AdminDateWidget)
         fields = ('date_of_daycare', 'notes')
 
 # Forms for Testimonials and comments:
