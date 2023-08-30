@@ -40,8 +40,16 @@ class Dog(models.Model):
         null=True,
         blank=True)
     breed = models.CharField(max_length=50)
-    food_provided = models.BooleanField(choices=FOOD_PROVIDED)
-    vaccinations_up_to_date = models.BooleanField(choices=VACCINATIONS_UP_TO_DATE)
+    food_provided = models.BooleanField(
+        choices=FOOD_PROVIDED,
+        initial=None,
+        required=True
+        )
+    vaccinations_up_to_date = models.BooleanField(
+        choices=VACCINATIONS_UP_TO_DATE,
+        initial=None,
+        required=True
+        )
 
     def __str__(self):
         return self.name
