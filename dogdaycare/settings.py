@@ -33,6 +33,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '8000-jjanczynska-doggiedayca-ta76r651ppq.ws-eu104.gitpod.io', 'dog-day-care-8fab57d98aa7.herokuapp.com']
 
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
 
 # Application definition
 
