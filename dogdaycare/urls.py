@@ -21,6 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('reservations/', views.reservations, name='reservations'),
     path('testimonials/', views.testimonials, name='testimonials'),
-    path('islandersdogdaycare/', include('islandersdogdaycare.urls')),
+    path('', include('islandersdogdaycare.urls')),
     path('accounts/', include('allauth.urls')),
 ]

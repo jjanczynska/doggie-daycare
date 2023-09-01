@@ -104,3 +104,9 @@ def testimonials(request):
             'comment_form': comment_form
             }
     )
+
+    # Home page View
+
+
+def index(request):
+    return render(request, 'index.html')
