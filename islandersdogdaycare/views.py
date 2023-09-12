@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Owner, Dog, Reservation, Testimonial, Comment
+
 from .forms import (
     OwnerForm,
     DogForm,
@@ -84,26 +85,34 @@ def testimonials(request):
 
     if request.method == 'POST':
         comment_form = CommentForm(data=request.POST)
-        if comment_form.is_valid():
+        testimonial_form = TestimonialForm(request.POST, request.FILES)
+        
+        if 'submit_comment' in request.POST and comment_form.is_valid():
             new_comment = comment_form.save(commit=False)
             testimonial_id = request.POST.get('testimonial_id')
             new_comment.testimonial = get_object_or_404(
-                Testimonial,
-                id=testimonial_id)
+                Testimonial, id=testimonial_id)
             new_comment.user = request.user
             new_comment.save()
             return redirect('testimonials')
+
+        elif ('submit_testimonial' in request.POST and
+                testimonial_form.is_valid()):
+            new_testimonial = testimonial_form.save(commit=False)
+            new_testimonial.author = request.user
+            new_testimonial.save()
+            return redirect('testimonials')
+
     else:
         comment_form = CommentForm()
+        testimonial_form = TestimonialForm()
 
-    return render(
-        request,
-        'testimonials.html',
-        {
-            'testimonials': all_testimonials,
-            'comment_form': comment_form
-            }
-    )
+    return render(request, 'testimonials.html', {
+        'testimonials': all_testimonials,
+        'comment_form': comment_form,
+        'testimonial_form': testimonial_form
+    })
+
 
     # Home page View
 

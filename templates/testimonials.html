@@ -1,61 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Testimonials</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</head>
-<body>
 
-    <h1>Please feel free to leave your own testimonial about our services</h1>
 
-    <!-- Button to Open the Testimonial Modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#testimonialModal">
-        + Add Testimonial
-    </button>
+{%  load crispy_forms_tags %}
+<!-- Adding a Testimonial -->
+<h1>Add a New Testimonial</h1>
+{% if user.is_authenticated %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ testimonial_form|crispy }}
+    <button type="submit" name="submit_testimonial" class="btn btn-primary">Add Testimonial</button>
+</form>
+{% else %}
+<p>You must be logged in to add a testimonial.</p>
+{% endif %}
 
-    <!-- The Testimonial Modal -->
-    <div class="modal" id="testimonialModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <!-- Your Testimonial form here -->
-                </div>
-            </div>
-        </div>
+<!-- Loop through testimonials -->
+
+{% for testimonial in testimonials %}
+<div class = "card mb-4">
+    <div class = "card-header">
+        <h3>{{ testimonial.title}}</h3>
+        <small>By {{ testimonial.author.username }} on {{ testimonial.created_on}}</small>
     </div>
-
-    <!-- Testimonials and comments -->
-    {% for testimonial in testimonials %}
+    <div class = "card-body">
+        <img src = "{{ testimonial.featured_image.url}}" alt = "{{ testimonial.title}}" class = "img-fluid mb-2">
+        <p class = "text-muted">Exerpt: {{ testimonial.excerpt }}</p>
         <p>{{ testimonial.content }}</p>
 
-        <!-- Button to toggle comment form -->
-        <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#commentForm{{testimonial.id}}" aria-expanded="false">
-            Comment
-        </button>
+        <!-- Comments-->
+        <h5>Feel free to comment</h5>
+        <ul class = "list-unstyled">
+            {%  for comment in testimonial.comments.all %}
+            <li class = "mb-2">
+                <strong>{{ comment.user.username}} ({{ comment.created_on}})</strong> {{ comment.text }}
+            </li>
+            {% empty %}
+            <li>No comments yet...</li>
+            {% endfor %}
+        </ul>
 
-        <!-- Collapsible comment form -->
-        <div class="collapse" id="commentForm{{testimonial.id}}">
-            <form method="post" action="{% url 'testimonials' %}">
-                {% csrf_token %}
-                <input type="hidden" name="testimonial_id" value="{{ testimonial.id }}">
-                {{ comment_form.as_p }}
-                <button type="submit" class="btn btn-primary">Add Comment</button>
-            </form>
-        </div>
+        <!-- Comment Form -->
+        {% if user.is_authenticated %}
+        <form method = "post" action = "{% url 'testimonials' %}">
+            {% csrf_token %}
+            <input type = "hidden" name = "testimonial_id" value = "{{ testimonial.id }}">
+            {{ comment_form|crispy }}
+            <button type="submit" class="btn btn-primary">Add Comment</button>
+          </form>
+          {% else %}
+          <p>You must be logged in to post a comment.</p>
+          {% endif %}
 
-        <!-- Displaying comments -->
-        {% for comment in testimonial.comments.all %}
-            {% if comment.approved %}
-                <p>{{ comment.content }}</p>
-            {% endif %}
-        {% endfor %}
-    {% endfor %}
-
-</body>
-</html>
+    </div>
+</div>
+{% endfor %}
