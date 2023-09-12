@@ -86,7 +86,6 @@ def testimonials(request):
     if request.method == 'POST':
         comment_form = CommentForm(data=request.POST)
         testimonial_form = TestimonialForm(request.POST, request.FILES)
-        
         if 'submit_comment' in request.POST and comment_form.is_valid():
             new_comment = comment_form.save(commit=False)
             testimonial_id = request.POST.get('testimonial_id')
@@ -112,7 +111,6 @@ def testimonials(request):
         'comment_form': comment_form,
         'testimonial_form': testimonial_form
     })
-
 
     # Home page View
 

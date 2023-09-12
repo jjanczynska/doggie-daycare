@@ -45,10 +45,17 @@
             <input type = "hidden" name = "testimonial_id" value = "{{ testimonial.id }}">
             {{ comment_form|crispy }}
             <button type="submit" class="btn btn-primary">Add Comment</button>
-          </form>
-          {% else %}
-          <p>You must be logged in to post a comment.</p>
-          {% endif %}
+        </form>
+
+        {% if commented %}
+        <div class="alert alert-success" role="alert">
+        Your comment is awaiting approval
+        </div>
+        {% endif %}
+
+        {% else %}
+        <p>You must be logged in to post a comment.</p>
+        {% endif %}
 
     </div>
 </div>
