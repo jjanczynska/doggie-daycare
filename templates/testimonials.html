@@ -13,6 +13,14 @@
 <p>You must be logged in to add a testimonial.</p>
 {% endif %}
 
+{% if submitted_testimonial %}
+<div class="alert alert-success" role="alert">
+    Your testimonial is awaiting approval
+</div>
+{% endif %}
+
+
+
 <!-- Loop through testimonials -->
 
 {% for testimonial in testimonials %}
