@@ -63,7 +63,7 @@ def reservations(request):
         )
     return render(
         request,
-        'reservations.html',
+        'islandersdogdaycare/reservations.html',
         {
             'owner_form': owner_form,
             'dog_form': dog_form,
