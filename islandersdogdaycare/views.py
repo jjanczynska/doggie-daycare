@@ -86,6 +86,7 @@ def testimonials(request):
     if request.method == 'POST':
         comment_form = CommentForm(data=request.POST)
         testimonial_form = TestimonialForm(request.POST, request.FILES)
+
         if 'submit_comment' in request.POST and comment_form.is_valid():
             new_comment = comment_form.save(commit=False)
             testimonial_id = request.POST.get('testimonial_id')
@@ -93,14 +94,14 @@ def testimonials(request):
                 Testimonial, id=testimonial_id)
             new_comment.user = request.user
             new_comment.save()
-            return redirect('testimonials')
+            return redirect('testimonials') + '?commented=True'
 
         elif ('submit_testimonial' in request.POST and
                 testimonial_form.is_valid()):
             new_testimonial = testimonial_form.save(commit=False)
             new_testimonial.author = request.user
             new_testimonial.save()
-            return redirect('testimonials')
+            return redirect('testimonials') + '?submitted_testimonial=True'
 
     else:
         comment_form = CommentForm()

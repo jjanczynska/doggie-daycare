@@ -2,18 +2,18 @@
 
 {%  block title %}Testimonials{% endblock %}
 
+{%  load crispy_forms_tags %}
+
 {% block content %}
   <h1>Hear from our customers and feel free to leave a comment!</h1>
-{% endblock %}
 
-{%  load crispy_forms_tags %}
 <!-- Adding a Testimonial -->
-<h1>Add a New Testimonial</h1>
 {% if user.is_authenticated %}
-<form method="post" enctype="multipart/form-data">
+<form method="post"  action="{% url 'testimonials' %}" enctype="multipart/form-data">
     {% csrf_token %}
     {{ testimonial_form|crispy }}
     <button type="submit" name="submit_testimonial" class="btn btn-primary">Add Testimonial</button>
+    <button type="submit" name="submit_comment" class="btn btn-primary">Add Comment</button>
 </form>
 {% else %}
 <p>You must be logged in to add a testimonial.</p>
@@ -24,6 +24,8 @@
     Your testimonial is awaiting approval
 </div>
 {% endif %}
+
+{% endblock %}
 
 
 

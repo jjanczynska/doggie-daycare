@@ -77,7 +77,6 @@ class Testimonial(models.Model):
         default='Testimonial Title')
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='Testimonials',
-        default='User'
     )
     featured_image = CloudinaryField('image', default='placeholder')
     excerpt = models.TextField(blank=True)
