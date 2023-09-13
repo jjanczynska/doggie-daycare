@@ -90,10 +90,8 @@ class Testimonial(models.Model):
         ordering = ['-created_on']
 
     def __str__(self):
-        if self.author:
+        if self.author and self.author.username:
             return f'Testimonial by {self.author.username}'
-        else:
-            return 'Anonymous Testimonial'
 
 
 # Comment Model
