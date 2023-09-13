@@ -82,7 +82,7 @@ class Testimonial(models.Model):
     excerpt = models.TextField(blank=True)
     updated_on = models.DateField(auto_now=True)
     content = models.TextField()
-    created_on = models.DateField()
+    created_on = models.DateField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     approved = models.BooleanField(default=False)
 
@@ -103,7 +103,7 @@ class Comment(models.Model):
     testimonial = models.ForeignKey(
         Testimonial, related_name='comments', on_delete=models.CASCADE
     )
-    created_on = models.DateField()
+    created_on = models.DateField(auto_now_add=True)
     text = models.TextField()
     approved = models.BooleanField(default=False)
 
