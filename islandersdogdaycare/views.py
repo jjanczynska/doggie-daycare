@@ -77,6 +77,8 @@ def reservations(request):
 
 
 def testimonials(request):
+    comment_form = CommentForm()
+    testimonial_form = TestimonialForm()
     all_testimonials = (
         Testimonial.objects
         .filter(status=1, approved=True)
@@ -91,7 +93,7 @@ def testimonials(request):
                 new_comment = comment_form.save(commit=False)
                 testimonial_id = request.POST.get('testimonial_id')
                 new_comment.testimonial = get_object_or_404(
-                    Testimonial, id=testimonial_id)
+                    Testimonial, id=taestimonial_id)
                 new_comment.user = request.user
                 new_comment.save()
                 return redirect('testimonials')
@@ -110,7 +112,7 @@ def testimonials(request):
         comment_form = CommentForm()
         testimonial_form = TestimonialForm()
 
-    return render(request, 'testimonials.html', {
+    return render(request, 'islandersdogdaycare/testimonials.html', {
         'testimonials': all_testimonials,
         'comment_form': comment_form,
         'testimonial_form': testimonial_form
@@ -123,13 +125,4 @@ def index(request):
     return render(request, 'islandersdogdaycare/index.html')
 
 
-# Testimonials View
 
-def testimonials(request):
-    return render(request, 'islandersdogdaycare/testimonials.html')
-
-
-# Reservations View
-
-def reservations(request):
-    return render(request, 'islandersdogdaycare/reservations.html')
