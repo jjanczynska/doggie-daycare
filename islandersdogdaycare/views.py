@@ -112,8 +112,14 @@ def testimonials(request):
         'testimonial_form': testimonial_form
     })
 
-    # Home page View
+# Home page View
 
 
 def index(request):
     return render(request, 'islandersdogdaycare/index.html')
+
+
+# Testimonials View
+
+def testimonial(request):
+    return render(request, 'islandersdogdaycare/testimonials.html')
