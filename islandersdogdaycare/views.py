@@ -121,5 +121,11 @@ def index(request):
 
 # Testimonials View
 
-def testimonial(request):
+def testimonials(request):
     return render(request, 'islandersdogdaycare/testimonials.html')
+
+
+# Reservations View
+
+def reservations(request):
+    return render(request, 'islandersdogdaycare/reservations.html')
