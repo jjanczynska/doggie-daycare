@@ -5,6 +5,16 @@
 {%  load crispy_forms_tags %}
 
 {% block content %}
+
+{% if messages %}
+<div class="messages">
+  {% for message in messages %}
+  <div class="alert alert-{{ message.tags }}">
+    {{ message }}
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
   <h1>Hear from our customers and feel free to leave a comment!</h1>
 
 <!-- Adding a Testimonial -->
@@ -13,7 +23,6 @@
     {% csrf_token %}
     {{ testimonial_form|crispy }}
     <button type="submit" name="submit_testimonial" class="btn btn-primary">Add Testimonial</button>
-    <button type="submit" name="submit_comment" class="btn btn-primary">Add Comment</button>
 </form>
 {% else %}
 <p>You must be logged in to add a testimonial.</p>
@@ -24,10 +33,6 @@
     Your testimonial is awaiting approval
 </div>
 {% endif %}
-
-{% endblock %}
-
-
 
 <!-- Loop through testimonials -->
 
@@ -42,37 +47,21 @@
         <p class = "text-muted">Exerpt: {{ testimonial.excerpt }}</p>
         <p>{{ testimonial.content }}</p>
 
-        <!-- Comments-->
-        <h5>Feel free to comment</h5>
-        <ul class = "list-unstyled">
-            {%  for comment in testimonial.comments.all %}
-            <li class = "mb-2">
-                <strong>{{ comment.user.username}} ({{ comment.created_on}})</strong> {{ comment.text }}
-            </li>
-            {% empty %}
-            <li>No comments yet...</li>
-            {% endfor %}
-        </ul>
-
         <!-- Comment Form -->
         {% if user.is_authenticated %}
         <form method = "post" action = "{% url 'testimonials' %}">
             {% csrf_token %}
             <input type = "hidden" name = "testimonial_id" value = "{{ testimonial.id }}">
             {{ comment_form|crispy }}
-            <button type="submit" class="btn btn-primary">Add Comment</button>
+            <button type="submit" name="submit_comment" class="btn btn-primary">Add Comment</button>
         </form>
 
-        {% if commented %}
-        <div class="alert alert-success" role="alert">
-        Your comment is awaiting approval
-        </div>
-        {% endif %}
-
         {% else %}
-        <p>You must be logged in to post a comment.</p>
+        <p>No testimonials yet...</p>
         {% endif %}
 
     </div>
 </div>
 {% endfor %}
+
+{% endblock %}

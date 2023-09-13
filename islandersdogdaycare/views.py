@@ -102,7 +102,8 @@ def testimonials(request):
                 new_testimonial = testimonial_form.save(commit=False)
                 new_testimonial.author = request.user
                 new_testimonial.save()
-                messages.success(request, 'Your testimonial is awaiting approval.')
+                messages.success(
+                    request, 'Your testimonial is awaiting approval.')
                 return redirect('testimonials')
 
     else:
