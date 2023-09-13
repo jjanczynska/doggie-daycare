@@ -116,4 +116,4 @@ def testimonials(request):
 
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'islandersdogdaycare/index.html')
