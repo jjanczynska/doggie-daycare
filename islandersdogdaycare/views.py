@@ -84,24 +84,26 @@ def testimonials(request):
     )
 
     if request.method == 'POST':
-        comment_form = CommentForm(data=request.POST)
-        testimonial_form = TestimonialForm(request.POST, request.FILES)
 
-        if 'submit_comment' in request.POST and comment_form.is_valid():
-            new_comment = comment_form.save(commit=False)
-            testimonial_id = request.POST.get('testimonial_id')
-            new_comment.testimonial = get_object_or_404(
-                Testimonial, id=testimonial_id)
-            new_comment.user = request.user
-            new_comment.save()
-            return redirect('testimonials') + '?commented=True'
+        if 'submit_comment' in request.POST:
+            comment_form = CommentForm(data=request.POST)
+            if comment_form.is_valid():
+                new_comment = comment_form.save(commit=False)
+                testimonial_id = request.POST.get('testimonial_id')
+                new_comment.testimonial = get_object_or_404(
+                    Testimonial, id=testimonial_id)
+                new_comment.user = request.user
+                new_comment.save()
+                return redirect('testimonials')
 
-        elif ('submit_testimonial' in request.POST and
-                testimonial_form.is_valid()):
-            new_testimonial = testimonial_form.save(commit=False)
-            new_testimonial.author = request.user
-            new_testimonial.save()
-            return redirect('testimonials') + '?submitted_testimonial=True'
+        elif 'submit_testimonial' in request.POST:
+            testimonial_form = TestimonialForm(request.POST, request.FILES)
+            if testimonial_form.is_valid(): 
+                new_testimonial = testimonial_form.save(commit=False)
+                new_testimonial.author = request.user
+                new_testimonial.save()
+                messages.success(request, 'Your testimonial is awaiting approval.')
+                return redirect('testimonials')
 
     else:
         comment_form = CommentForm()
