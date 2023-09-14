@@ -209,6 +209,13 @@ body, h1, h2, p {
 
 /* RESERVATIONS STYLE*/
 
+.container-reservations {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .container-reservations h1, .container-reservations h2 {
     font-family: 'Prompt', sans-serif;
     color: #6f1a07;
@@ -247,9 +254,69 @@ input[type="submit"]:hover {
     transition: 0.3s ease;
 }
 
-.container-reservations {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+
+ /* TESTIMONIALS STYLE*/
+
+ /* Messages*/
+ .container-testimonials .messages .alert {
+    font-family: 'Roboto', sans-serif;
+    margin-top: 20px;
+ }
+
+ /* Heading */
+ .container-testimonials h1 {
+    font-family: 'Prompt', sans-serif;
+    color: #6F1A07;
+ }
+
+ /* Testimonial Forms */
+ form[action*="testimonals"] {
+    font-family: 'Roboto', sans-serif;
+    background-color: #F4F4F9;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+ }
+
+ /* Testimonial Cards */
+ .card {
+    font-family: 'Roboto', sans-serif;
+    background-color: #F4F4F9;
+    margin-bottom: 25px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+ }
+
+ .card-header h3 {
+    font-family: 'Prompt', sans-serif;
+    color: #6f1a07;
+ }
+
+ .card-body .text-muted {
+    color: #6f1a07;
+    font-size: 1.1em;
+ }
+
+ /* Buttons */
+
+button.btn-primary {
+    background-color: #218380;
+    color: #F4F4F9;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+button.btn-primary:hover {
+    background-color: #FBB13C;
+    transition: 0.3s ease;
+}
+
+/* Login Prompt */
+
+.container-testimonials p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2em;
+    color: #6f1a07;
 }

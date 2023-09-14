@@ -7,43 +7,43 @@
 {%  load crispy_forms_tags %}
 
 {% block content %}
-
+<div class="container-testimonials">
 {% if messages %}
-<div class="messages">
+  <div class="messages">
   {% for message in messages %}
-  <div class="alert alert-{{ message.tags }}">
+    <div class="alert alert-{{ message.tags }}">
     {{ message }}
-  </div>
+      </div>
   {% endfor %}
-</div>
+  </div>
 {% endif %}
-  <h1>Hear from our customers and feel free to leave a comment!</h1>
+    <h1>Hear from our customers and feel free to leave a comment!</h1>
 
 <!-- Adding a Testimonial -->
 {% if user.is_authenticated %}
-<form method="post"  action="{% url 'testimonials' %}" enctype="multipart/form-data">
+  <form method="post"  action="{% url 'testimonials' %}" enctype="multipart/form-data">
     {% csrf_token %}
     {{ testimonial_form|crispy }}
-    <button type="submit" name="submit_testimonial" class="btn btn-primary">Add Testimonial</button>
-</form>
+      <button type="submit" name="submit_testimonial" class="btn btn-primary">Add Testimonial</button>
+  </form>
 {% else %}
-<p>You must be logged in to add a testimonial.</p>
+  <p>You must be logged in to add a testimonial.</p>
 {% endif %}
 
 {% if submitted_testimonial %}
-<div class="alert alert-success" role="alert">
-    Your testimonial is awaiting approval
-</div>
+  <div class="alert alert-success" role="alert">
+      Your testimonial is awaiting approval
+  </div>
 {% endif %}
 
 <!-- Loop through testimonials -->
 
 {% for testimonial in testimonials %}
-<div class = "card mb-4">
-    <div class = "card-header">
-        <h3>{{ testimonial.title}}</h3>
-        <small>By {{ testimonial.author.username }} on {{ testimonial.created_on}}</small>
-    </div>
+  <div class = "card mb-4">
+      <div class = "card-header">
+          <h3>{{ testimonial.title}}</h3>
+            <small>By {{ testimonial.author.username }} on {{ testimonial.created_on}}</small>
+      </div>
     <div class = "card-body">
         <img src = "{{ testimonial.featured_image.url}}" alt = "{{ testimonial.title}}" class = "img-fluid mb-2">
         <p class = "text-muted">Exerpt: {{ testimonial.excerpt }}</p>
@@ -62,8 +62,8 @@
         <p>No testimonials yet...</p>
         {% endif %}
 
-    </div>
-</div>
+      </div>
+  </div>
 {% endfor %}
-
+</div>
 {% endblock %}
