@@ -1,0 +1,14 @@
+/* Base style */
+
+body {
+    background-color: #F4F4F9;
+    color: #4C212A;
+    font-family: 'Roboto', sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.header {
+    background-color: #218380;
+    color: #F4F4F9;
+    font-family: 'Prompt', sans-serif;
+}
