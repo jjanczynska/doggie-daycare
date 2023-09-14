@@ -155,3 +155,54 @@ body, h1, h2, p {
     color: #4C212A;
     margin-bottom: 20px;
 }
+
+/* Pricing */
+
+#pricing {
+    background-color: #218380;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+    margin-bottom: 40px;
+    color:#F4F4F9
+}
+
+#pricing .container {
+    max-width: 1140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#pricing h2 {
+    font-family: 'Prompt', sans-serif;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 2.5em;
+}
+
+#pricing table {
+    max-width: 80%;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+#pricing th, #pricing td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #F4F4F9;
+}
+
+#pricing thead {
+    background-color: #6F1A07;
+    color: #F4F4F9;
+}
+
+#pricing tbody tr:hover {
+    background-color: #4C212A;
+    color: #F4F4F9;
+}
