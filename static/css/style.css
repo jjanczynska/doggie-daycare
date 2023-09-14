@@ -1,4 +1,4 @@
-/* Base style */
+/* BASE STYLE */
 
 body {
     background-color: #F4F4F9;
@@ -58,7 +58,7 @@ body {
     
 }
 
-/* Index Styles */
+/* INDEX STYLES */
 
 body, h1, h2, p {
     font-family: 'Roboto', sans-serif;
@@ -118,3 +118,6 @@ body, h1, h2, p {
     height: auto;
     object-fit: cover;
 }
+
+/* Our Story */
+
