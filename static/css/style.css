@@ -12,3 +12,48 @@ body {
     color: #F4F4F9;
     font-family: 'Prompt', sans-serif;
 }
+
+/* Logo */
+.logo img:hover {
+    transform: scale(1.1)
+}
+
+/* Navbar */
+#mainNav {
+    background-color: #6F1A07;
+    transition: all 0.3s ease;
+}
+
+.navbar-dark .navbar-brand,
+.navbar-dark .navbar-nav .nav-link {
+    color: #FBB13C;
+    font-size: 1.5em;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #F4F4F9
+}
+
+.navbar-nav .nav-item {
+    margin-left: 20px;
+}
+
+/* Footer */
+
+.bg-footer {
+    background-color: #4C212A;
+}
+
+.text-footer a:hover {
+    color: #F4F4F9
+}
+
+.social-media-icon {
+    font-size: 30px;
+    margin:0 5em;
+    color: #FBB13C;
+    transition: color 0.3s ease;
+    
+}
