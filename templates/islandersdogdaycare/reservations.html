@@ -5,7 +5,7 @@
 {%  block title %}Reservations{% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container-reservations">
   <h1>Make a reservastion for your dog</h1>
 
     {% if reservation_made %}
@@ -13,7 +13,7 @@
     <a href="{% url 'reservations' %}">Return to Reservation Form</a>
     {% else %}
     
-        <form method="post">
+        <form method="post" class="reservation-form">
             {% csrf_token %}
         
             <h2>Owner Details</h2>

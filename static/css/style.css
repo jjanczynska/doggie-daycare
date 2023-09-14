@@ -206,3 +206,50 @@ body, h1, h2, p {
     background-color: #4C212A;
     color: #F4F4F9;
 }
+
+/* RESERVATIONS STYLE*/
+
+.container-reservations h1, .container-reservations h2 {
+    font-family: 'Prompt', sans-serif;
+    color: #6f1a07;
+}
+
+form {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f9;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input[type="submit"] {
+    background-color: #218380;
+    color: #f4f4f9;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+input[type="submit"]:hover {
+    background-color: #fbb13c;
+    transition: 0.3s ease;
+}
+
+.container-reservations a {
+    color: #4c212a;
+}
+
+.container-reservations a:hover {
+    color: #fbb13c;
+    transition: 0.3s ease;
+}
+
+.container-reservations {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
