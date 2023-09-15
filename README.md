@@ -1,108 +1,216 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# TIC-TAC-TOE GAME
+## [Link to the deployed application](https://)
+![main logo](docs/deployed.png)
 
-Welcome jjanczynska,
+## CONTENTS
+---
+* [USER EXPERIENCE](#user-exp)  
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+    * [User Stories](#user-stories)        
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+* [DESIGN](#design)  
 
-## Gitpod Reminders
+    * [Colour Scheme](#colour-scheme)  
+    * [Database schema](#database-schema)  
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+* [FEATURES](#features)
 
-`python3 -m http.server`
+    * [Features to implement](#features-to-implement)
 
-A blue button should appear to click: _Make Public_,
+* [TECHNOLOGIES USED](#technologies-used)  
 
-Another blue button should appear to click: _Open Browser_.
+    * [Languages Used](#languages-used)
+    * [Pyhon modules Used](#p-modules)
+    * [Frameworks, Libraries and Programes Used](#frameworks-libraries-programs) 
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+* [TESTING](TESTING.md)  
 
-A blue button should appear to click: _Make Public_,
+* [DEPLOYMENT AND LOCAL DEVELOPMENT](#deployment-development) 
 
-Another blue button should appear to click: _Open Browser_.
+    * [Deployment](#deployment)  
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+    * [Local Development](#local-development)  
 
-To log into the Heroku toolbelt CLI:
+        * [How To Fork](#how-to-fork)
+        * [How To Clone](#how-to-clone)
+        * [Using GitPod](#using-gitpod)
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+* [CREDITS](#Credits) 
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+    * [Code Used](#Code-Used)
+    * [Acknowledgments](#Acknowledgments) 
 
-------
 
-## Release History
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+## USER EXPERIENCE (UX)<a id = "user-exp"></a> 
+ ---
+ ### User Stories<a id = "user-stories"></a> 
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
-
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+ #### As a returning User I want to easily sign in to make a reservation for my dog. 
 
 ---
+ ## DESIGN<a id = "design"></a> 
+ ---
+ ### Colour Scheme<a id = "colour-scheme"></a> 
 
-Happy coding!
+ The colour scheme used was defined on coolors
+
+* 
+* 
+* 
+*   
+* 
+---
+## The Flow Chart<a id = "flow-chart"></a> 
+---
+### The flowchart was made using 
+
+<details>
+    <summary>Database Schema</summary>
+
+![FlowChart](docs/flowchart.png)
+
+<br>
+
+</details>
+
+ ---
+ ## THE FEATURES<a id = "features"></a> 
+--- 
+ * 
+
+    * 
+    ![main logo]()
+
+    *  
+    
+
+    * 
+    
+
+    * 
+    
+
+    * 
+    ![]()
+
+    * 
+    ![]()
+
+    * 
+    ![]()
+
+    * 
+    ![]()
+    ![]()
+
+    * 
+    ![]()
+---
+### Features to implement<a id = "features-to-implement"></a> 
+* 
+* 
+* 
+---
+## TECHNOLOGIES USED<a id = "technologies-used"></a> 
+---
+### Languages Used<a id = "languages-used"></a> 
+
+* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSSS) - was used to edit the layout (mainly add background) in the layout.html file
+* [Python](https://www.python.org/) - was used to write the program.
+
+### Python Modules Used<a id = "p-modules"></a>  
+
+* [random](https://docs.python.org/3/library/random.html) - 
+* [os](https://docs.python.org/3/library/os.html) - was used to write the function to clear the terminal.
+* [time](https://docs.python.org/3/library/time.html) - was used to add a sleep function between displaying a message and clearing the terminal, or between 2 messages displaying.
+* [colorama](https://pypi.org/project/colorama/) - was used to add colour schemes to content displaying in the terminal.
+
+### Frameworks, Libraries and Programs Used<a id = "frameworks-libraries-programs"></a>  
+
+* [Git](https://git-scm.com/) - for version control. 
+* [GitHub](https://github.com/) - to store the project files.
+* [GitPod](https://www.gitpod.io/) - as the CDE for development.
+* [Heroku](heroku.com) - was used to deploy the progect.
+* [Lucidchart](https://www.lucidchart.com/) - to create the flow chart.
+* [Hero Patterns](https://heropatterns.com/) - to create a CSS background.
+
+---
+## [TESTING](TESTING.md)
+
+Results of the testing of the programe are available in another file. You can visit is by clicking on a link above.
+---
+## DEPLOYMENT AND LOCAL DEVELOPMENT<a id = "deployment-development"></a> 
+---
+### Deployment<a id = "deployment"></a> 
+
+Before deploying, make sure your requirements.txt is updated 
+
+This project was deployed in Heroku and the steps to deploy are:
+
+1. Create an account and login to Heroku.
+1. On the dashboard, click the button NEW --> to create a new app on the right side of the webpage.
+1. Choose a name for the app and choose your region. Click --> Create app.
+1. Go to the Settings tab, Scroll down to the Config Vars. Add key PORT and value of 8000.
+1. Scroll down to Buildpacks, add, in this order- buildpack python followed by buildpack nodejs.
+1. Go to Deploy tab, Select GitHub as Deployment Method and connect your account.
+1. Enter the name of your respository and connect.
+1. Select the Branch and click- Connect Branch.
+
+### Local Development<a id = "local-development"></a> 
+
+#### How to Fork<a id = "how-to-fork"></a>
+
+1. Log in or Sign up to GitHUb
+1. Go to this project repository: (https://github.com/jjanczynska/tic-tac-toe).
+1. On the right hand side of the repository, there is a button with FORK on it --> click it.
+1. A ne page "Create a ne Fork" will open, you can also edit the name if you would like.
+1. At the bottom of the page - click on CREATE FORK.
+1. Now, you have a copy of the project in your repositories.
+
+#### How to Clone<a id = "how-to-clone"></a>
+
+1. Log in or Sign Up to GitHub
+1. Go to this project repository: (https://github.com/jjanczynska/tic-tac-toe).
+1. Click on the CODE button and select if you would like to clone with : HTTPS, SSH or GitHub CLI and copy the link.
+1. Open the terminal in the code editor of your choice, and change the current working directory to the one you will use to clone the repository.
+1. Type: "git clone" into the terminal and then paste the link you copied before, and press ENTER.
+
+
+#### Using GitPod<a id = "using-gitpod"></a>
+
+If you would like to edit the copy of ths repository in GitPod, follow this steps:
+1. Install the GitPod extension on your browser of choice.
+1. On GitHub open the project repository you forked.
+1. On the top of the page, on the right hand side, click the green button with GitPod, click it.
+1. It opens the GitPod website. If you are a first time user - connect it to your GitHub account and authorize gitpod-io. In the next step - create your account.
+1. GitPod will create your Workspacem which may take a while. After the workspace has been loaded, you can start editing in GitPod.
+---
+## CREDITS<a id = "Credits"></a>
+---
+
+### Code Used<a id = "Code-Used"></a>
+*  []() 
+*  []()
+
+
+*  []():
+
+*  []().
+---
+### Acknowledgments<a id = "Acknowledgments"></a>
+
+
+
+
+
+
+
+
