@@ -93,7 +93,7 @@ def testimonials(request):
                 new_comment = comment_form.save(commit=False)
                 testimonial_id = request.POST.get('testimonial_id')
                 new_comment.testimonial = get_object_or_404(
-                    Testimonial, id=taestimonial_id)
+                    Testimonial, id=testimonial_id)
                 new_comment.user = request.user
                 new_comment.save()
                 return redirect('testimonials')
@@ -124,5 +124,12 @@ def testimonials(request):
 def index(request):
     return render(request, 'islandersdogdaycare/index.html')
 
+# custom Error Views
 
 
+def custom_page_not_found_view(request, exception):
+    return render(request, 'islandersdogdaycare/404.html', {})
+
+
+def custom_permission_denied_view(request, exception):
+    return render(request, 'islandersdogdaycare/403.html', {})

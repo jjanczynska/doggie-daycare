@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import handler403, handler404
 from islandersdogdaycare import views
 
 urlpatterns = [
@@ -22,3 +23,6 @@ urlpatterns = [
     path('', include('islandersdogdaycare.urls')),
     path('accounts/', include('allauth.urls')),
 ]
+
+handler404 = 'islandersdogdaycare.views.custom_page_not_found_view'
+handler403 = 'islandersdogdaycare.views.custom_permission_denied_view'
