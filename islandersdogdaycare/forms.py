@@ -57,7 +57,7 @@ class ReservationForm(forms.ModelForm):
 class TestimonialForm(forms.ModelForm):
     class Meta:
         model = Testimonial
-        fields = ['title', 'excerpt', 'content', 'featured_image']
+        fields = ['title', 'content', 'featured_image']
 
 
 class CommentForm(forms.ModelForm):

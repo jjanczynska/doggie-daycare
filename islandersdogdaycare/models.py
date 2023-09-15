@@ -79,7 +79,6 @@ class Testimonial(models.Model):
         User, on_delete=models.CASCADE, related_name='Testimonials',
     )
     featured_image = CloudinaryField('image', default='placeholder')
-    excerpt = models.TextField(blank=True)
     updated_on = models.DateField(auto_now=True)
     content = models.TextField()
     created_on = models.DateField(auto_now_add=True)
