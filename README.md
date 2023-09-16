@@ -169,7 +169,7 @@ This project was deployed in Heroku and the steps to deploy are:
 #### How to Fork<a id = "how-to-fork"></a>
 
 1. Log in or Sign up to GitHUb
-1. Go to this project repository: (https://github.com/jjanczynska/tic-tac-toe).
+1. Go to this project repository: (https://github.com/jjanczynska/).
 1. On the right hand side of the repository, there is a button with FORK on it --> click it.
 1. A ne page "Create a ne Fork" will open, you can also edit the name if you would like.
 1. At the bottom of the page - click on CREATE FORK.
@@ -178,7 +178,7 @@ This project was deployed in Heroku and the steps to deploy are:
 #### How to Clone<a id = "how-to-clone"></a>
 
 1. Log in or Sign Up to GitHub
-1. Go to this project repository: (https://github.com/jjanczynska/tic-tac-toe).
+1. Go to this project repository: (https://github.com/jjanczynska/).
 1. Click on the CODE button and select if you would like to clone with : HTTPS, SSH or GitHub CLI and copy the link.
 1. Open the terminal in the code editor of your choice, and change the current working directory to the one you will use to clone the repository.
 1. Type: "git clone" into the terminal and then paste the link you copied before, and press ENTER.
