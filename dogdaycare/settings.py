@@ -108,9 +108,13 @@ WSGI_APPLICATION = 'dogdaycare.wsgi.application'
 # Get the HEROKU_POSTGRESQL_BROWN_URL from the enviroment variables/ issue after POSTGESQL maintanace email.
 # falling back to DATABASE_URL if not found
 
-#DATABASES = {
+# DATABASES = {
 #     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 # }
+
+brown_db_url = os.environ.get('HEROKU_POSTGRESQL_BROWN_URL', os.environ.get('DATABASE_URL'))
+
+
 DATABASES = {
     'default': dj_database_url.parse(brown_db_url)
 }
