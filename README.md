@@ -8,7 +8,8 @@
 
     *  [Wireframes](#wireframes)
 
-    *  [Kanban Board](#kanban-board)        
+    *  [Kanban Board](#kanban-board)  
+
 
 * [DESIGN](#design)  
 
@@ -54,6 +55,14 @@
     
 * Kanban Board <a id = "kanban-board"></a>
     ![Kanban Board](readme-img/Kanban.png)
+
+* Epics
+
+    ![EPICS/USER STORIES/CRITERIA/TASKS](readme-img/1epic.png)
+    ![EPICS/USER STORIES/CRITERIA/TASKS](readme-img/2epic.png)
+    ![EPICS/USER STORIES/CRITERIA/TASKS](readme-img/3epic.png)
+    ![EPICS/USER STORIES/CRITERIA/TASKS](readme-img/4epic.png)
+    
 
  ---
  ### User Stories<a id = "user-stories"></a> 
