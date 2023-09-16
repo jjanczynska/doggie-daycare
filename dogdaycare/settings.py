@@ -31,6 +31,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 ALLOWED_HOSTS = ['localhost', '8000-jjanczynska-doggiedayca-ta76r651ppq.ws-eu104.gitpod.io', 'dog-day-care-8fab57d98aa7.herokuapp.com']
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
