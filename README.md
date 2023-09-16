@@ -11,7 +11,8 @@
 * [DESIGN](#design)  
 
     * [Colour Scheme](#colour-scheme)  
-    * [Database schema](#database-schema)  
+    * [Flowchart](#flowchart)
+    * [Database schema](#database)  
 
 * [FEATURES](#features)
 
@@ -19,9 +20,8 @@
 
 * [TECHNOLOGIES USED](#technologies-used)  
 
-    * [Languages Used](#languages-used)
-    * [Pyhon modules Used](#p-modules)
-    * [Frameworks, Libraries and Programes Used](#frameworks-libraries-programs) 
+    * [Languages and Libraries Used](#languages-libraries-used)
+    * [Frameworks and Programes Used](#frameworks-programs) 
 
 * [TESTING](TESTING.md)  
 
@@ -64,24 +64,19 @@
 ![Colour Scheme](readme-img/colour-scheme.png)
 
 ---
-## The Flow Chart
+## The Flow Chart<a id = "flowchart"></a>
 ![Flowchart](readme-img/flowchart.png) 
 ---
 ### The flowchart was made using Lucidcharts
 
-<details>
-    <summary>Database Schema</summary>
+## The Datbase Schema<a id = "database"></a>
 
 ![Database schema](readme-img/database.png)
-
-<br>
-
-</details>
 
  ---
  ## THE FEATURES<a id = "features"></a> 
 --- 
- * 
+ * The Application consist of 3 pages- Home- Index page, Testimonials and Reservations
 
     * Main Logo
     ![main logo](readme-img/main%20logo.png)
@@ -107,11 +102,11 @@
     * Footer with Social Media Icons
     ![Footer](readme-img/footer.png)
     
-    * Customers Testimonials and Commenting Section
+    * Customers Testimonials and Commenting Section on Testimonials Page
     ![Testimonials](readme-img/testimonials.png)
     ![Commenting](readme-img/testimonial-comment.png)
 
-    * Reservations Section
+    * Reservations Section on Reservations Page
     ![Reservations1](readme-img/reservations.png)
     ![Reservations2](readme-img/reservations1.png)
 
