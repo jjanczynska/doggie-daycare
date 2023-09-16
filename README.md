@@ -1,4 +1,4 @@
-# TIC-TAC-TOE GAME
+# ISLANDERS DOGGIE DAY CARE
 ## [Link to the deployed application](https://)
 ![main logo](docs/deployed.png)
 
