@@ -47,7 +47,9 @@
 ## USER EXPERIENCE (UX)<a id = "user-exp"></a> 
 
 * Wireframes <a id = "wireframes"></a>
+
     ![Website](readme-img/webpage-wireframe.png)
+    
     ![Mobile](readme-img/mobile-wireframe.png)
     
 * Kanban Board <a id = "kanban-board"></a>
