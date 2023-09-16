@@ -8,6 +8,7 @@
 ---
 * [AUTOMATED TESTING](#automated-testing)
 
+  * [HTML Validator](#html-validator)
   * [Jigsaw Validator](#jigsaw-validator)
   * [CI Python Linter](#ci-python-linter)
   * [Lighthouse](#lighthouse)
@@ -26,6 +27,10 @@
 Testing was conducted throught the project development cycle.
 
 ## AUTOMATED TESTING
+
+### HTML Validator
+
+![HTML Validator]()
 ---
 ### Jigsaw Validator
 ---
