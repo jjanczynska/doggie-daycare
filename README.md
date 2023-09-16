@@ -1,14 +1,14 @@
 # ISLANDERS DOGGIE DAY CARE
-## [Link to the deployed application](https://https://dog-day-care-8fab57d98aa7.herokuapp.com)
+## [Link to the deployed application](https://dog-day-care-8fab57d98aa7.herokuapp.com/)
 ![main logo](readme-img/main%20logo.png)
 
 ## CONTENTS
 ---
 * [USER EXPERIENCE](#user-exp)  
 
-    * Wireframes [Wireframes](#wireframes)
+    *  [Wireframes](#wireframes)
 
-    *  Kanban Board [User Stories](#user-stories)        
+    *  [Kanban Board](#kanban-board)        
 
 * [DESIGN](#design)  
 
@@ -50,7 +50,7 @@
     ![Website](readme-img/webpage-wireframe.png)
     ![Mobile](readme-img/mobile-wireframe.png)
     
-* Kanban Board
+* Kanban Board <a id = "kanban-board"></a>
     ![Kanban Board](readme-img/Kanban.png)
 
  ---
@@ -74,15 +74,13 @@
 ![Colour Scheme](readme-img/colour-scheme.png)
 
 ---
+
 ## The Flow Chart<a id = "flowchart"></a>
 ![Flowchart](readme-img/flowchart.png) 
 ---
-### The flowchart and database schema were made using Lucidcharts
 
 ## The Datbase Schema<a id = "database"></a>
-
-![Database schema](readme-img/database.png)
----
+![Database schema](readme-img/database%20.png)
 
  ---
  ## THE FEATURES<a id = "features"></a> 
@@ -207,6 +205,8 @@ If you would like to edit the copy of ths repository in GitPod, follow this step
 ---
 ## CREDITS<a id = "Credits"></a>
 ---
+1. Logo was copied from a free source (https://www.vecteezy.com/)
+1. Images used on the index page in the carousel feature were taken as a free saurce from (https://pixabay.com/)
 
 ### Code Used<a id = "Code-Used"></a>
 *  []() 
@@ -218,6 +218,8 @@ If you would like to edit the copy of ths repository in GitPod, follow this step
 *  []().
 ---
 ### Acknowledgments<a id = "Acknowledgments"></a>
+
+Thank you to my mentor Spencer Barribal and to my family for help with testing the responsiveness of the project.
 
 
 
