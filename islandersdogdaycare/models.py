@@ -10,9 +10,9 @@ class Owner(models.Model):
         User,
         on_delete=models.CASCADE,
         primary_key=True)
-    name = models.CharField(max_length=100, default='Enter your name')
-    tel_no = models.CharField(max_length=15, default='Enter your phone number')
-    email_address = models.EmailField(default='Enter your email address')
+    name = models.CharField(max_length=100)
+    tel_no = models.CharField(max_length=15)
+    email_address = models.EmailField()
 
     def __str__(self):
         return self.user.username
