@@ -49,7 +49,7 @@
 * Wireframes <a id = "wireframes"></a>
 
     ![Website](readme-img/webpage-wireframe.png)
-    
+
     ![Mobile](readme-img/mobile-wireframe.png)
     
 * Kanban Board <a id = "kanban-board"></a>
@@ -90,34 +90,53 @@
  * The Application consist of 3 pages- Home- Index page, Testimonials and Reservations
 
     * Main Logo
+
     ![main logo](readme-img/main%20logo.png)
 
+
     *  Header
+
      ![Header](readme-img/header.png)
 
+
     * Navigation Bar
+
      ![Navbar](readme-img/navbar.png)
 
+
     * Why Choose Us section
+
      ![Why Choose Us?](readme-img/why-choose.png)
 
+
     * Image Carousel
+
     ![Image Carousel](readme-img/pic-carousel.png)
 
+
     * Our Story Section
+
     ![Our Story](readme-img/our-story.png)
 
+
     * Pricing Section
+
     ![Pricing](readme-img/pricing.png)
 
+
     * Footer with Social Media Icons
+
     ![Footer](readme-img/footer.png)
     
+
     * Customers Testimonials and Commenting Section on Testimonials Page
+
     ![Testimonials](readme-img/testimonials.png)
     ![Commenting](readme-img/testimonial-comment.png)
 
+
     * Reservations Section on Reservations Page
+    
     ![Reservations1](readme-img/reservations.png)
     ![Reservations2](readme-img/reservations1.png)
 

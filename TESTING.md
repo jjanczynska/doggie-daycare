@@ -30,17 +30,30 @@ Testing was conducted throught the project development cycle.
 
 ### HTML Validator
 
+#### Home/Index page
 ![HTML Validator](readme-img/html-home.png)
+
+#### Reservations page
 ![HTML Validator](readme-img/html-reservations.png)
+
+#### Testimonials page
 ![HTML Validator](readme-img/html-testimonials.png)
+
+#### Login page
 ![HTML Validator](readme-img/html-login.png)
 ---
 ### Jigsaw Validator
 ---
-
+#### Home/Index page
 ![CSS Validator](readme-img/css-index.png)
+
+#### Reservations page
 ![CSS Validator](readme-img/css-reservations.png)
+
+#### Testimonials page
 ![CSS Validator](readme-img/css-testimonials.png)
+
+#### Login page
 ![CSS Validator](readme-img/css-login.png)
 
 ### CI Python Linter
@@ -65,9 +78,16 @@ Testing was conducted throught the project development cycle.
 ---
 I have used Chrome Dev Tools Lighthouse to test the performance, accsesibility and best practices for home, testimonials, reservations and login pages
 
+#### Home/Index page
 ![Lighthouse](readme-img/home-lighthouse.png)
+
+#### Testimonials page
 ![Lighthouse](readme-img/testimonials-lighthouse.png)
+
+#### Reservations page
 ![Lighthouse](readme-img/reservations-lighthouse.png)
+
+#### Login page
 ![Lighthouse](readme-img/login-lighthouse.png)
 
 
@@ -98,18 +118,19 @@ I have used Chrome Dev Tools Lighthouse to test the performance, accsesibility a
 | sign in feature before leading to reservations | able to sign in | signing in | able to sign in | PASS | 
 | Reservations form | able to make a reservation | making multiple reservations | as intended | Pass | 
 | Ability to return to reservation form after completing the reservation | Return to main reservation page | clicking on return button | as intended | PASS | 
-| Adding testimonial to be approved by admin | waiting for approval | adding testimonial and checking admin site |  |  | 
-|   |  |  |  | | 
-|  |  |  |  |  |
-|  |  |  |  |  | 
-|  | |  |  | |
-|  | |  |  |  |
+| Adding testimonial to be approved by admin | waiting for approval | adding testimonial and checking admin site | getting approved | PASS | 
+| Ability to add an image to testimonial | Image present with testimonial | adding testimonial and image | both present | PASS | 
+| Login to the website | logging in | logging in | able to log in | PASS |
+| logout  | logout from the service | logging out | logged out | PASS | 
+
 
 ---
 ## BUGS
+
+* There were various bugs that have been discovered during testing. Example- admin lacked ability to approve testimonials- issue was resolved by adding that ability to the admin panel. Another example- placeholder text in reservation models was resulting in SERVER ERROR(500), since one default setting exceeded 15 characters on the telephone number. After updating models - issue was resolved. 
 ---
 ### Known Bugs
 
-
+No known bugs were noticed.
 
 ## RETURN TO [README](README.md)
