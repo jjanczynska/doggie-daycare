@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import login, logout
+from django.contrib.auth import login as auth_login, logout as auth_logout
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from .models import Owner, Dog, Reservation, Testimonial, Comment
 
@@ -127,18 +128,18 @@ def login(request):
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
             user = form.get_user()
-            login(request, user)
+            auth_login(request, user)
             return redirect('islandersdogdaycare/index')
         else:
             form = AuthenticationForm()
-        return render(request, 'account/login.html')
+        return render(request, 'account/login.html', {'form': form})
 
 # Logout View
 
 
 def logout(request):
-    logout(request)
-    return redirect('index')
+    auth_logout(request)
+    return redirect('islandersdogdaycare/index')
 
 
 # Home page View
