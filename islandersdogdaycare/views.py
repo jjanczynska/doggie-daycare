@@ -129,17 +129,17 @@ def login(request):
         if form.is_valid():
             user = form.get_user()
             auth_login(request, user)
-            return redirect('islandersdogdaycare/index')
-        else:
-            form = AuthenticationForm()
-        return render(request, 'account/login.html', {'form': form})
+            return redirect('index')
+    else:
+        form = AuthenticationForm()
+    return render(request, 'account/login.html', {'form': form})
 
 # Logout View
 
 
 def logout(request):
     auth_logout(request)
-    return redirect('islandersdogdaycare/index')
+    return redirect('index')
 
 
 # Home page View
