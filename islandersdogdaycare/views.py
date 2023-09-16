@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login, logout
 from django.contrib import messages
 from .models import Owner, Dog, Reservation, Testimonial, Comment
 
@@ -100,7 +101,7 @@ def testimonials(request):
 
         elif 'submit_testimonial' in request.POST:
             testimonial_form = TestimonialForm(request.POST, request.FILES)
-            if testimonial_form.is_valid(): 
+            if testimonial_form.is_valid():
                 new_testimonial = testimonial_form.save(commit=False)
                 new_testimonial.author = request.user
                 new_testimonial.save()
@@ -117,6 +118,28 @@ def testimonials(request):
         'comment_form': comment_form,
         'testimonial_form': testimonial_form
     })
+
+# Login View
+
+
+def login(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('islandersdogdaycare/index')
+        else:
+            form = AuthenticationForm()
+        return render(request, 'account/login.html')
+
+# Logout View
+
+
+def logout(request):
+    logout(request)
+    return redirect('index')
+
 
 # Home page View
 

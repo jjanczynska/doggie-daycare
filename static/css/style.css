@@ -54,6 +54,8 @@ body {
     transition: color 0.3s ease;
 }
 
+
+
 .navbar-dark .navbar-nav .nav-link:hover {
     color: #F4F4F9
 }
@@ -299,15 +301,6 @@ input[type="submit"]:hover {
     color: #fbb13c;
     transition: 0.3s ease;
 }
-
-
-
-
-
-
-
-
-
 
  /* Testimonial Forms */
  form[action*="testimonals"] {
