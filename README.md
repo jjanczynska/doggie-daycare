@@ -1,5 +1,5 @@
 # ISLANDERS DOGGIE DAY CARE
-## [Link to the deployed application](https://https://dog-day-care-8fab57d98aa7.herokuapp.com/testimonials/)
+## [Link to the deployed application](https://https://dog-day-care-8fab57d98aa7.herokuapp.com)
 ![main logo](readme-img/main%20logo.png)
 
 ## CONTENTS
@@ -56,12 +56,12 @@
  ---
  ### User Stories<a id = "user-stories"></a> 
 
- * 
- * 
- * 
- * 
- * 
- * 
+ * As a User I want to learn about the business.
+ * As a User I want to know how to contact the business.
+ * As a User I want to learn what other customers experience was.
+ * As a user I would like to leave my testimonial and comment of testimonials of others.
+ * As a user I would like to check the businesses social media accounts.
+ * As a user I would like to make a reservation for my dog
 
  #### As a returning User I want to easily sign in to make a reservation for my dog. 
 
