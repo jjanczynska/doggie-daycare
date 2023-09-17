@@ -2,7 +2,17 @@
 ---
 ### [Link to the deployed application](https://dog-day-care-8fab57d98aa7.herokuapp.com/)
 
+
+
 ![home page](readme-img/home-p.png)
+
+
+#### Application is fully responsive and tested on following browsers: 
+[Google Chrome](https://www.google.com/intl/en_ie/chrome/)
+[Mozilla Firefox](https://www.mozilla.org/en-GB/firefox/new/)
+[Microsoft edge](https://www.microsoft.com/en-gb/edge/welcome?form=MA13FJ)
+
+Test were carried by Developer tools in the browsers as well as variaty of Mobile phones and tablets.
 
 ## CONTENTS
 ---

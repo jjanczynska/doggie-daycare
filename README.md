@@ -1,4 +1,6 @@
 # ISLANDERS DOGGIE DAY CARE
+
+## Django based web application for a dog day care business. Giving potential customers the ability to learn more about the business, register, make reservations for their dogs, read and leave testimonials and make comment on testimonials of other users.
 ## [Link to the deployed application](https://dog-day-care-8fab57d98aa7.herokuapp.com/)
 ![home page](readme-img/home-page.png)
 
