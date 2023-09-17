@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Owner, Dog, Reservation, Testimonial, Comment
 
-# SAdmin actions for approving testimonials
+# Admin actions for approving testimonials
 
 
 def approve_testimonials(modeladmin, request, queryset):

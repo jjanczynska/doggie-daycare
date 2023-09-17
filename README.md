@@ -239,13 +239,24 @@ If you would like to edit the copy of ths repository in GitPod, follow this step
 1. Images used on the index page in the carousel feature were taken as a free saurce from (https://pixabay.com/)
 
 ### Code Used<a id = "Code-Used"></a>
-*  []() 
-*  []()
+
+#### I have used various documentation to and web resources to build this project. To make it fully responsive Bootstrap library was used and then I build upon that with custom CSS.
+
+*  Image carousel- [How to build a Bootstrap carousel](https://getbootstrap.com/docs/5.1/components/carousel/), [How to manage static images in Django](https://docs.djangoproject.com/en/3.2/howto/static-files/), [How to make images responsive in Bootstrap](https://getbootstrap.com/docs/5.1/content/images/#responsive-images).
+
+*  Change icon to text in the footer- jquery was used to build that code snippets- references: [ready() method](https://api.jquery.com/ready/),
+[data() method](https://api.jquery.com/data/), [html() method](https://api.jquery.com/html/), [hover() method](https://api.jquery.com/hover/).
 
 
-*  []():
+*  looping through testimonials and adding comments, Cross Site Request Forgery protection, Use of Crispy Forms, Django user Authentication, date formatting- Idea was taken from CI Django Blog project, [Use of Bootstrap Cards](https://getbootstrap.com/docs/5.1/components/card/). 
 
-*  []().
+*  Models.py was influenced by 2 walk through Django projects by Code Institute, I have also read through [Django documentation on models](https://docs.djangoproject.com/en/4.2/topics/db/models/).
+
+* Forms.py was helped along by [Django documentation on froms](https://docs.djangoproject.com/en/4.2/topics/forms/).
+
+* Views.py was influenced by 2 walk through Django projects by Code Institute, I have also read through [Django documentation on forms](https://docs.djangoproject.com/en/4.2/topics/forms/)
+
+* Admin action on approving testimonials- that was added to give admin power to [approve testimonials before publishing](https://docs.djangoproject.com/en/3.1/ref/contrib/admin/actions/) and [buid upon Admin permissions](https://books.agiliq.com/projects/django-admin-cookbook/en/latest/).
 ---
 ### Acknowledgments<a id = "Acknowledgments"></a>
 
