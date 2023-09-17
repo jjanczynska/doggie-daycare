@@ -1,6 +1,6 @@
 # ISLANDERS DOGGIE DAY CARE
 ## [Link to the deployed application](https://dog-day-care-8fab57d98aa7.herokuapp.com/)
-![main logo](readme-img/main%20logo.png)
+![home page](readme-img/home-page.png)
 
 ## CONTENTS
 ---
