@@ -278,7 +278,7 @@ input[type="submit"]:hover {
     transition: 0.3s ease;
 }
 
-.btn-view-reservations {
+.container-reservations .btn-view-reservations {
     background-color: #218380;
     color: #f4f4f9;
     padding: 10px 20px;
@@ -288,10 +288,15 @@ input[type="submit"]:hover {
     text-decoration: none;
     display: inline-block;
     margin-top: 20px;
+    font-size: 1em;
+    font-weight: bold;
 }
 
-.btn-view-reservations:hover {
+.container-reservations .btn-view-reservations:hover {
     background-color: #fbb13c;
+    color: #4C212A;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 

@@ -21,7 +21,10 @@ from .forms import (
 
 @login_required
 def reservations(request):
-    reservation_made = False
+    owner_form = OwnerForm()
+    dog_form = DogForm()
+    reservation_form = ReservationForm()
+
     if request.method == 'POST':
         owner_form = OwnerForm(request.POST)
         dog_form = DogForm(request.POST)
@@ -55,29 +58,24 @@ def reservations(request):
             reservation.save()
 
             messages.success(request, 'Reservation successfully created!')
-            return redirect('reservation_list')
-            reservation_made = True
-        else:
-            messages.error(request, 'Please correct the errors below.')
-    else:
-        owner_form = OwnerForm()
-        dog_form = DogForm()
-        reservation_form = ReservationForm()
 
+        else: 
+            messages.error(request, 'Please correct the errors below.')
+
+        
     existing_reservations = Reservation.objects.filter(
         owner__user=request.user
         )
+
+    context = {
+        'owner_form': owner_form,
+        'dog_form': dog_form,
+        'reservation_form': reservation_form,
+        'existing_reservations': existing_reservations,
+    }
     return render(
         request,
-        'islandersdogdaycare/reservations.html',
-        {
-            'owner_form': owner_form,
-            'dog_form': dog_form,
-            'reservation_form': reservation_form,
-            'reservations': existing_reservations,
-            'reservation_made': reservation_made
-        }
-    )
+        'islandersdogdaycare/reservations.html', context)
 
 # Reservations Read View
 

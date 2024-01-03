@@ -8,27 +8,25 @@
 <div class="container-reservations">
   <h1>Make a reservastion for your dog</h1>
 
-    {% if reservation_made %}
-    <h1>Thank you for making a reservation for your dog.</h1>
-    <a href="{% url 'reservation_list' %}">View My Reservations</a>
-    <a href="{% url 'reservations' %}">Return to Reservation Form</a>
-    {% else %}
-    
-        <form method="post" class="reservation-form">
-            {% csrf_token %}
+  {% if existing_reservations %}
+        <h2>You have {{ existing_reservations.count }} reservation(s).</h2>
+        <a href="{% url 'reservation_list' %}" class="btn-view-reservations" >View My Reservations</a>
+    {% endif %}
+
+    <form method="post" class="reservation-form">
+        {% csrf_token %}
         
-            <h2>Owner Details</h2>
-            {{ owner_form.as_p }}
-    
-            <h2>Date of Boarding</h2>
-            {{ reservation_form.date_of_daycare.label_tag }} {{ reservation_form.date_of_daycare }}
-    
-            <h2>Dog Information</h2>
-            {{ dog_form.as_p }}
+        <h2>Owner Details</h2>
+        {{ owner_form.as_p }}
+
+        <h2>Date of Boarding</h2>
+        {{ reservation_form.date_of_daycare.label_tag }} {{ reservation_form.date_of_daycare }}
+
+        <h2>Dog Information</h2>
+        {{ dog_form.as_p }}
     
             <input type="submit" value="Submit">
         </form>
-    {% endif %}
   </div>
     {% endblock %}
 
