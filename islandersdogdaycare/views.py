@@ -13,7 +13,9 @@ from .forms import (
     CommentForm
 )
 
-# Reservations View:
+# RESERVATIONS VIEWS:
+
+# Reservations Create View
 
 
 @login_required
@@ -74,6 +76,46 @@ def reservations(request):
             'reservation_made': reservation_made
         }
     )
+
+# Reservations Read View
+
+@login_required
+def reservation_list(request):
+    reservations = Reservation.objects.filter(owner__user=request.user)
+    return render(request, 'reservation_list.html', {'reservation': reservation})
+
+@login_required
+def reservation_detail(request, reservation_id):
+    reservation = get_object_or_404(Reservation, pk=reservation_id, owner__user=request.user)
+    return render(request, 'reservation_detail.html', {'reservation': reservation})
+
+# Reservations Update View
+
+@login_required
+def update_reservation(request, reservation_id):
+    reservation = get_object_or_404(Reservation, pk=reservation_id, owner__user=request.user)
+    if request.method == "POST":
+        form = ReservationForm(request.POST, instance=reservation)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Reservation updated successfully!')
+            return redirect('reservation_detail', reservation_id=reservation.id)
+    else:
+        form = ReservationForm(instance=reservation)
+    return render(request, 'update_reservation.html', {'form': form})
+
+# Reservations Delete View
+
+@login_required
+def delete_reservation(request, reservation_id):
+    reservation = get_object_or_404(Reservation, pk=reservation_id, owner__user=request.user)
+    if request.method == "POST":
+        reservation.delete()
+        messages.success(request, 'Reservation deleted successfully!')
+        return redirect('reservation_list')
+    return render(request, 'delete_reservation.html', {'reservation': reservation})
+
+
 
 # Testimonials and comments View
 
