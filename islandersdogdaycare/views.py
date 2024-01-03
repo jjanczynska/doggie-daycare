@@ -4,6 +4,7 @@ from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from .models import Owner, Dog, Reservation, Testimonial, Comment
+from django.urls import reverse
 
 from .forms import (
     OwnerForm,
@@ -88,7 +89,7 @@ def reservation_list(request):
 @login_required
 def reservation_detail(request, reservation_id):
     reservation = get_object_or_404(Reservation, pk=reservation_id, owner__user=request.user)
-    return render(request, 'islandersdogdaycare/reservation_detail.html', {'reservation': reservations})
+    return render(request, 'islandersdogdaycare/reservation_detail.html', {'reservation': reservation})
 
 # Reservations Update View
 
@@ -108,7 +109,8 @@ def update_reservation(request, reservation_id):
             dog_form.save()
             reservation_form.save()
             messages.success(request, 'Reservation updated successfully!')
-            return redirect('islandersdogdaycare/reservation_detail', reservation_id=reservation.id)
+            return redirect(reverse('reservation_detail', args=[reservation.id]))
+
     else:
         reservation_form = ReservationForm(instance=reservation)
         owner_form = OwnerForm(instance=owner)
@@ -120,7 +122,7 @@ def update_reservation(request, reservation_id):
         'dog_form': dog_form,
     }
 
-    return render(request, 'islandersdogdaycare/update_reservation.html', {'form': form})
+    return render(request, 'islandersdogdaycare/update_reservation.html', context)
 
 # Reservations Delete View
 
@@ -131,7 +133,7 @@ def delete_reservation(request, reservation_id):
         reservation.delete()
         messages.success(request, 'Reservation deleted successfully!')
         return redirect('reservation_list')
-    return render(request, 'islandersdogdaycare/delete_reservation.html', {'reservations': reservations})
+    return render(request, 'islandersdogdaycare/delete_reservation.html', {'reservation': reservation})
 
 
 
