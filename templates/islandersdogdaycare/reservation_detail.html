@@ -1,0 +1,18 @@
+{% extends 'islandersdogdaycare/base.html' %}
+
+{% load static %}
+
+{% block title %}Reservation Details{% endblock %}
+
+{% block content %}
+<div class="container-reservation-detail">
+    <h1>Reservation Detail</h1>
+    <p>Dog: {{ reservation.dog.name }}</p>
+    <p>Date of Daycare: {{ reservation.date_of_daycare }}</p>
+    <p>Owner: {{ reservation.owner.name }}</p>
+    
+
+    <a href="{% url 'update_reservation' reservation.id %}">Edit Reservation</a>
+    <a href="{% url 'delete_reservation' reservation.id %}">Delete Reservation</a>
+</div>
+{% endblock %}

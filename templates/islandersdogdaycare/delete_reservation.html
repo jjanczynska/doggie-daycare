@@ -1,0 +1,17 @@
+{% extends 'islandersdogdaycare/base.html' %}
+
+{% load static %}
+
+{% block title %}Delete Reservation{% endblock %}
+
+{% block content %}
+<div class="container-delete-reservation">
+    <h1>Delete Reservation</h1>
+    <p>Are you sure you want to delete this reservation for {{ reservation.dog.name }} on {{ reservation.date_of_daycare }}?</p>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Confirm Delete">
+    </form>
+    <a href="{% url 'reservation_detail' reservation.id %}">Cancel</a>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'islandersdogdaycare/base.html' %}
+
+{% load static %}
+
+{% block title %}Edit Reservation{% endblock %}
+
+{% block content %}
+<div class="container-update-reservation">
+    <h1>Edit Reservation</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Update Reservation">
+    </form>
+</div>
+{% endblock %}
