@@ -278,6 +278,24 @@ input[type="submit"]:hover {
     transition: 0.3s ease;
 }
 
+.btn-view-reservations {
+    background-color: #218380;
+    color: #f4f4f9;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.btn-view-reservations:hover {
+    background-color: #fbb13c;
+}
+
+
+
 /* Additional Styles for Reservation Templates */
 
 /* Reservation List Style */

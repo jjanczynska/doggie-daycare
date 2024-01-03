@@ -54,6 +54,7 @@ def reservations(request):
             reservation.save()
 
             messages.success(request, 'Reservation successfully created!')
+            return redirect('reservation_list')
             reservation_made = True
         else:
             messages.error(request, 'Please correct the errors below.')
@@ -82,12 +83,12 @@ def reservations(request):
 @login_required
 def reservation_list(request):
     reservations = Reservation.objects.filter(owner__user=request.user)
-    return render(request, 'reservation_list.html', {'reservation': reservation})
+    return render(request, 'reservation_list.html', {'reservations': reservations})
 
 @login_required
 def reservation_detail(request, reservation_id):
     reservation = get_object_or_404(Reservation, pk=reservation_id, owner__user=request.user)
-    return render(request, 'reservation_detail.html', {'reservation': reservation})
+    return render(request, 'reservation_detail.html', {'reservations': reservations})
 
 # Reservations Update View
 
@@ -113,7 +114,7 @@ def delete_reservation(request, reservation_id):
         reservation.delete()
         messages.success(request, 'Reservation deleted successfully!')
         return redirect('reservation_list')
-    return render(request, 'delete_reservation.html', {'reservation': reservation})
+    return render(request, 'delete_reservation.html', {'reservations': reservations})
 
 
 

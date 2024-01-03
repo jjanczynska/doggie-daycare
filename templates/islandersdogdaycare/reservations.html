@@ -10,6 +10,7 @@
 
     {% if reservation_made %}
     <h1>Thank you for making a reservation for your dog.</h1>
+    <a href="{% url 'reservation_list' %}">View My Reservations</a>
     <a href="{% url 'reservations' %}">Return to Reservation Form</a>
     {% else %}
     
