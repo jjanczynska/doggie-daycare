@@ -60,10 +60,12 @@
 
 * Epics
 
-    ![EPICS/USER STORIES/CRITERIA/TASKS](readme-img/1epic.png)
-    ![EPICS/USER STORIES/CRITERIA/TASKS](readme-img/2epic.png)
-    ![EPICS/USER STORIES/CRITERIA/TASKS](readme-img/3epic.png)
-    ![EPICS/USER STORIES/CRITERIA/TASKS](readme-img/4epic.png)
+    ![Epic 1](readme-img/Epic1.png)
+    ![Epic 2](readme-img/Epic2.png)
+    ![Epic 3](readme-img/Epic3.png)
+    ![Epic 4](readme-img/Epic4.png)
+    ![Epic 5 and 6](readme-img/Epic5_6.png)
+    
     
 
  ---
