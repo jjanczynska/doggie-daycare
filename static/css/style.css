@@ -408,9 +408,11 @@ input[type="submit"]:hover {
  .card {
     font-family: 'Roboto', sans-serif;
     background-color: #F4F4F9;
-    margin-bottom: 25px;
+    max-width: 500px;
+    margin: 0 auto 25px auto;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
  }
 
  .card-header h3 {
@@ -461,6 +463,11 @@ button.btn-primary:hover {
 
     .header .logo, .header .contact-info {
         margin-bottom: 15px;
+    }
+
+    .card {
+        max-width: 100%;
+        padding: 15px;
     }
 
     .social-media-icon {
